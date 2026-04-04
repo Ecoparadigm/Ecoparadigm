@@ -106,7 +106,7 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            <Link href="#">About Us</Link>
+            <Link href="/aboutus">About Us</Link>
           </nav>
 
           {/* Button */}

@@ -41,7 +41,11 @@ export default function WhatWeDo() {
   return (
     <section className="pt-24 pb-10 px-8 md:px-16 bg-white text-center">
       {/* 🔥 Heading with gradient */}
-      <h2 className="text-3xl md:text-4xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-green-500 bg-clip-text text-transparent">
+      <h2
+        className="text-3xl md:text-4xl font-semibold mb-4 
+bg-gradient-to-r from-blue-600 via-teal-300 to-green-500 
+bg-clip-text text-transparent"
+      >
         What We Do
       </h2>
 
