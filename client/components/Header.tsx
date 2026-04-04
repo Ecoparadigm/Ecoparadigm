@@ -33,12 +33,9 @@ export default function Header() {
       {/* Navbar */}
       <div className="bg-white px-8 py-3 flex items-center justify-between shadow-sm">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          {/* <div className="w-8 h-8 bg-red-400"></div>
-          <span className="font-semibold text-lg">eco paradigm</span> */}
-
+        <Link href="/" className="flex items-center gap-2">
           <Image src="/logo.png" alt="Eco Paradigm" width={140} height={40} />
-        </div>
+        </Link>
 
         <div className="flex items-center">
           {/* Menu */}
