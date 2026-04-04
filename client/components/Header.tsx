@@ -74,8 +74,9 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
+            <Link href="#">Industries</Link>
             <Link href="#">Natural STP</Link>
-            <Link href="#">Projects</Link>
+            <Link href="/projects">Projects</Link>
 
             {/* RESOURCES */}
             <div
