@@ -13,7 +13,7 @@ export default function Footer() {
         {/* LEFT SECTION */}
         <div className="md:col-span-2">
           <Image
-            src="/logo.png" // put your logo in public/
+            src="/logoWhite.png" 
             alt="Eco Paradigm"
             width={180}
             height={60}
