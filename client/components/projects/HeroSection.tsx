@@ -25,7 +25,7 @@ export default function HeroSection() {
         <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">
           <span className="text-white">Full-Spectrum</span>
           <br />
-          <span className="text-green-400">
+          <span className="text-green-300">
             Environmental Solutions
           </span>
         </h1>
@@ -42,7 +42,7 @@ export default function HeroSection() {
         </p>
 
         {/* Button */}
-        <button className="bg-green-500 text-black font-medium px-6 py-3 rounded-lg hover:bg-green-400 transition">
+        <button className="bg-green-300 text-black font-medium px-6 py-3 rounded-lg hover:bg-green-400 transition">
           Talk to Our Expert
         </button>
 

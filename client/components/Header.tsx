@@ -135,7 +135,7 @@ export default function Header() {
   const services = [
     {
       name: "Waste Water Treatment",
-      href: "/all-services/waste-water-treatment",
+      href: "/natural-stp",
     },
     {
       name: "Rainwater Harvesting",
@@ -227,7 +227,7 @@ export default function Header() {
             </div>
 
             <Link href="#">Industries</Link>
-            <Link href="#">Natural STP</Link>
+            <Link href="/natural-stp">Natural STP</Link>
             <Link href="/projects">Projects</Link>
 
             {/* RESOURCES DROPDOWN */}

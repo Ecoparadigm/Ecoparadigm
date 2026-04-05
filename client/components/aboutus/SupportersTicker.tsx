@@ -34,7 +34,7 @@ export default function SupportersTicker() {
                 alt="supporter"
                 width={120}
                 height={60}
-                className="object-contain opacity-80 hover:opacity-100 transition"
+                className="object-contain"
               />
             </div>
           ))}

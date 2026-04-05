@@ -106,7 +106,7 @@ export default function VisionMissionHeader() {
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         viewport={{ once: true }}
         className="text-2xl md:text-4xl font-medium leading-tight max-w-3xl mb-12"
       >
@@ -129,7 +129,7 @@ export default function VisionMissionHeader() {
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.8}}
           viewport={{ once: true }}
           className="p-6 md:p-10 border-b md:border-b-0 md:border-r border-gray-300"
         >
@@ -163,7 +163,7 @@ export default function VisionMissionHeader() {
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, delay: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
           className="p-6 md:p-10"
         >
