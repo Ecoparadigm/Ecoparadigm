@@ -39,7 +39,7 @@ export default function CTASection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row justify-center gap-4"
         >
