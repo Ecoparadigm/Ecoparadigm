@@ -119,7 +119,6 @@
 //   );
 // }
 
-
 "use client";
 
 import Link from "next/link";
@@ -139,7 +138,7 @@ export default function Header() {
     },
     {
       name: "Rainwater Harvesting",
-      href:"/all-services/rainwater-harvesting",
+      href: "/all-services/rainwater-harvesting",
     },
     {
       name: "Lake Restoration",
@@ -165,7 +164,7 @@ export default function Header() {
 
   const resources = [
     { name: "Blogs", href: "/blogs" },
-    { name: "Our Clients", href: "/clients" },
+    { name: "Our Clients", href: "/resources/our-clients" },
     { name: "Awards", href: "/aboutus" },
     { name: "Careers", href: "/careers" },
   ];
@@ -189,7 +188,6 @@ export default function Header() {
         <div className="flex items-center">
           {/* Menu */}
           <nav className="hidden md:flex gap-8 mr-6 text-gray-700 relative">
-            
             {/* SERVICES DROPDOWN */}
             <div
               className="relative"

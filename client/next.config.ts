@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       "images.unsplash.com",
       "cdn.pixabay.com",
       "randomuser.me",
+      "picsum.photos",
     ],
   },
 };
