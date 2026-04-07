@@ -4,6 +4,8 @@ import AwardsSection from "@/components/natural-stp/AwardsSection";
 import ComparisonSection from "@/components/natural-stp/ComparisonSection";
 import InfrastructureSection from "@/components/natural-stp/InfrastructureSection";
 import ShowcaseCarouselSection from "@/components/natural-stp/ShowcaseCarouselSection";
+import WhatWeOffer from "@/components/natural-stp/WhatWeOffer";
+import ContactSection from "@/components/natural-stp/ContactSection";
 
 export default function NaturalSTPPage() {
   return (
@@ -14,6 +16,8 @@ export default function NaturalSTPPage() {
       <ComparisonSection />
       <InfrastructureSection />
       <ShowcaseCarouselSection />
+      <WhatWeOffer />
+      <ContactSection />
     </>
   );
 }

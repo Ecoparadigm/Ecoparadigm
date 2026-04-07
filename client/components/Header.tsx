@@ -166,7 +166,7 @@ export default function Header() {
   const resources = [
     { name: "Blogs", href: "/blogs" },
     { name: "Our Clients", href: "/clients" },
-    { name: "Awards", href: "/awards" },
+    { name: "Awards", href: "/aboutus" },
     { name: "Careers", href: "/careers" },
   ];
 
