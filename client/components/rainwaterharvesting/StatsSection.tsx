@@ -1,74 +1,3 @@
-// "use client";
-
-// import { ArrowDown, Droplet, Cloud, MapPin } from "lucide-react";
-
-// export default function StatsSection() {
-//   const stats = [
-//     {
-//       title: "Waste Water treated",
-//       value: "80Bn",
-//       icon: <ArrowDown size={28} />,
-//     },
-//     {
-//       title: "Rainwater saved",
-//       value: "3,500MLD",
-//       icon: <Droplet size={28} />,
-//     },
-//     {
-//       title: "CO₂ emissions cut",
-//       value: "500+",
-//       icon: <Cloud size={28} />,
-//     },
-//     {
-//       title: "Groundwater Restored",
-//       value: "1,000MLD",
-//       icon: <MapPin size={28} />,
-//     },
-//   ];
-
-//   return (
-//     <section className="py-20 px-6 bg-gray-50">
-//       {/* Top Label */}
-//       <div className="text-center mb-6">
-//         <span className="text-sm px-4 py-1 border rounded-full text-gray-500 tracking-wide">
-//           SUSTAINABILITY IN NUMBERS
-//         </span>
-//       </div>
-
-//       {/* Heading */}
-//       <h2 className="text-center text-3xl md:text-4xl font-semibold mb-12">
-//         Proven Results. <span className="text-green-600">Powerful Impact.</span>
-//       </h2>
-
-//       {/* Stats Container */}
-//       <div className="max-w-7xl mx-auto border-2 border-dashed border-gray-300 rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-4">
-//         {stats.map((item, index) => (
-//           <div
-//             key={index}
-//             className={`flex flex-col items-center justify-between py-15 px-6 text-center relative
-//               ${index !== stats.length - 1 ? "md:border-r border-dashed border-gray-300" : ""}
-//             `}
-//           >
-//             {/* Title */}
-//             <p className="text-gray-500 text-lg mb-14">{item.title}</p>
-
-//             {/* Icon */}
-//             <div className="flex flex-col items-center">
-//               <div className="text-gray-400 mb-1">{item.icon}</div>
-
-//               {/* Value */}
-//               <h3 className="text-3xl font-semibold text-gray-900">
-//                 {item.value}
-//               </h3>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
 import { ArrowDown, Droplet, Cloud, MapPin } from "lucide-react";
@@ -112,7 +41,6 @@ export default function StatsSection() {
 
   return (
     <section className="py-20 px-6 bg-gray-50">
-
       {/* Label */}
       <div className="text-center mb-6">
         <span className="text-xs px-4 py-1 border rounded-full text-gray-500 tracking-wide">
@@ -128,13 +56,11 @@ export default function StatsSection() {
         viewport={{ once: true }}
         className="text-center text-3xl md:text-4xl font-semibold mb-12"
       >
-        Proven Results.{" "}
-        <span className="text-green-600">Powerful Impact.</span>
+        Proven Results. <span className="text-green-600">Powerful Impact.</span>
       </motion.h2>
 
       {/* Stats Box */}
       <div className="max-w-6xl mx-auto border border-dashed border-gray-300 rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-4">
-        
         {stats.map((item, index) => (
           <motion.div
             key={index}
@@ -153,19 +79,11 @@ export default function StatsSection() {
             <p className="text-gray-500 text-sm mb-6">{item.title}</p>
 
             {/* Icon */}
-            <div className="text-gray-400 mb-4">
-              {item.icon}
-            </div>
+            <div className="text-gray-400 mb-4">{item.icon}</div>
 
             {/* Animated Number */}
             <h3 className="text-3xl font-semibold text-gray-900">
-              {mounted && (
-                <CountUp
-                  start={0}
-                  end={item.value}
-                  duration={2.5}
-                />
-              )}
+              {mounted && <CountUp start={0} end={item.value} duration={2.5} />}
               {item.suffix}
             </h3>
           </motion.div>
