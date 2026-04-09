@@ -103,7 +103,6 @@ export default function Header() {
               </AnimatePresence>
             </div>
 
-            <Link href="#">Industries</Link>
             <Link href="/natural-stp">Natural STP</Link>
             <Link href="/projects">Projects</Link>
 
