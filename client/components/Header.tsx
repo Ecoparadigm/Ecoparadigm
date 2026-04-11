@@ -218,7 +218,7 @@ export default function Header() {
               className="relative"
             >
               <span className="cursor-pointer flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                {/* <div className="w-2 h-2 bg-green-500 rounded-full"></div> */}
                 All Services ▾
               </span>
 
@@ -255,7 +255,7 @@ export default function Header() {
               className="relative"
             >
               <span className="cursor-pointer flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                {/* <div className="w-2 h-2 bg-green-500 rounded-full"></div> */}
                 Resources ▾
               </span>
 
@@ -306,15 +306,15 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden bg-white px-6 py-6 shadow-lg space-y-4"
+            className="md:hidden bg-white px-6 py-6 shadow-lg space-y-4 flex flex-col absolute top-full left-0 w-full z-40"
           >
             {/* Services */}
             <div>
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                className="w-full text-left font-medium flex items-center gap-2"
+                className="w-full flex items-center gap-2"
               >
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                {/* <div className="w-2 h-2 bg-green-500 rounded-full"></div> */}
                 All Services ▾
               </button>
 
@@ -339,9 +339,9 @@ export default function Header() {
             <div>
               <button
                 onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
-                className="w-full text-left font-medium flex items-center gap-2"
+                className="w-full flex items-center gap-2"
               >
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                {/* <div className="w-2 h-2 bg-green-500 rounded-full"></div> */}
                 Resources ▾
               </button>
 
