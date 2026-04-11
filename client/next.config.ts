@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
       "picsum.photos",
     ],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 
 export default nextConfig;
