@@ -1,3 +1,66 @@
+// "use client";
+
+// import Image from "next/image";
+
+// export default function FeaturesSection() {
+//   return (
+//     <section className="py-20 px-20">
+//       <h1 className="text-4xl text-center text-blue-600 pb-20">Tailored Solutions to revolutionise the way you harvest rain</h1>
+//       <div className="max-w-4xl mx-auto space-y-20">
+//         {features.map((item, index) => {
+//           const isReverse = index % 2 !== 0;
+
+//           return (
+//             <div
+//               key={index}
+//               className={`flex flex-col md:flex-row items-center gap-10 ${
+//                 isReverse ? "md:flex-row-reverse" : ""
+//               }`}
+//             >
+//               {/* TEXT */}
+//               <div className="flex-1">
+//                 <h2 className="text-2xl md:text-3xl font-bold text-black">
+//                   {item.title}
+//                 </h2>
+
+//                 <p className="mt-4 text-gray-600 text-lg">{item.description}</p>
+
+//                 {/* Bullet Points (only if exists) */}
+//                 {item.points && (
+//                   <ul className="mt-4 text-lg space-y-2 text-gray-700 list-disc list-inside">
+//                     {item.points.map((point, i) => (
+//                       <li key={i}>{point}</li>
+//                     ))}
+//                   </ul>
+//                 )}
+
+//                 {/* Button (only if exists) */}
+//                 {item.button && (
+//                   <button className="mt-6 px-5 py-3 bg-green-500 text-white text-lg rounded-lg hover:bg-green-600 transition">
+//                     {item.button}
+//                   </button>
+//                 )}
+//               </div>
+
+//               {/* IMAGE */}
+//               <div className="flex-1">
+//                 <div className="relative w-full h-[250px] md:h-[450px] rounded-2xl overflow-hidden">
+//                   <Image
+//                     src={item.image}
+//                     alt={item.title}
+//                     fill
+//                     className="object-cover"
+//                   />
+//                 </div>
+//               </div>
+//             </div>
+//           );
+//         })}
+//       </div>
+//     </section>
+//   );
+// }
+
 "use client";
 
 import Image from "next/image";
@@ -57,47 +120,55 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-20 px-20">
-      <h1 className="text-4xl text-center text-blue-600 pb-20">Tailored Solutions to revolutionise the way you harvest rain</h1>
-      <div className="max-w-4xl mx-auto space-y-20">
+    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32">
+      {/* 🔥 Heading */}
+      <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-center text-blue-600 mb-10 sm:mb-16 md:mb-20 leading-tight">
+        Tailored Solutions to revolutionise the way you harvest rain
+      </h1>
+
+      <div className="max-w-6xl lg:max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
         {features.map((item, index) => {
           const isReverse = index % 2 !== 0;
 
           return (
             <div
               key={index}
-              className={`flex flex-col md:flex-row items-center gap-10 ${
+              className={`flex flex-col md:flex-row items-center gap-8 sm:gap-10 md:gap-12 ${
                 isReverse ? "md:flex-row-reverse" : ""
               }`}
             >
-              {/* TEXT */}
+              {/* 🔹 TEXT */}
               <div className="flex-1">
-                <h2 className="text-2xl md:text-3xl font-bold text-black">
+                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-black leading-snug">
                   {item.title}
                 </h2>
 
-                <p className="mt-4 text-gray-600 text-lg">{item.description}</p>
+                {item.description && (
+                  <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                    {item.description}
+                  </p>
+                )}
 
-                {/* Bullet Points (only if exists) */}
+                {/* Points */}
                 {item.points && (
-                  <ul className="mt-4 text-lg space-y-2 text-gray-700 list-disc list-inside">
+                  <ul className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg space-y-1.5 sm:space-y-2 text-gray-700 list-disc list-inside">
                     {item.points.map((point, i) => (
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
                 )}
 
-                {/* Button (only if exists) */}
+                {/* Button */}
                 {item.button && (
-                  <button className="mt-6 px-5 py-3 bg-green-500 text-white text-lg rounded-lg hover:bg-green-600 transition">
+                  <button className="mt-5 sm:mt-6 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 text-white text-sm sm:text-base md:text-lg rounded-lg hover:bg-green-600 transition">
                     {item.button}
                   </button>
                 )}
               </div>
 
-              {/* IMAGE */}
-              <div className="flex-1">
-                <div className="relative w-full h-[250px] md:h-[450px] rounded-2xl overflow-hidden">
+              {/* 🔹 IMAGE */}
+              <div className="flex-1 w-full">
+                <div className="relative w-full h-[200px] sm:h-[250px] md:h-[320px] lg:h-[400px] rounded-2xl overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}

@@ -24,11 +24,14 @@
 //             transition={{ duration: 0.6 }}
 //             className="text-4xl md:text-5xl font-bold text-black"
 //           >
-//             Recover your Wasted Potential.
+//             The Impact of Expert Solid Waste Management
 //           </motion.h1>
 
 //           <p className="mt-4 text-gray-600">
-//             Turn Rain Into a Reliable Water Source
+//             We provide end-to-end, sustainable waste solutions for cities and
+//             industries. Leveraging 20 years of expertise, we transform waste
+//             into resources through smart collection, segregation, and
+//             eco-friendly processing.
 //           </p>
 
 //           <div className="mt-6 flex justify-center gap-4">
@@ -46,8 +49,8 @@
 //       <div className="max-w-7xl mx-auto mt-12 relative rounded-2xl overflow-hidden">
 //         <div className="relative w-full h-[300px] md:h-[300px]">
 //           <Image
-//             src="https://images.unsplash.com/photo-1762710964670-cc96a0076f25?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//             alt="Rainwater harvesting"
+//             src="https://plus.unsplash.com/premium_photo-1663099654523-d3862b7742cd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+//             alt="Solid Waste Management"
 //             fill
 //             className="object-cover"
 //           />
@@ -55,14 +58,6 @@
 
 //         {/* Overlay */}
 //         <div className="absolute inset-0 bg-black/20" />
-
-//         {/* Left Text */}
-//         <div className="absolute left-6 top-6 max-w-md text-white text-sm md:text-base font-medium">
-//           Did you know? A 1,000 square foot roof can capture approximately 600
-//           gallons of water during just 1 inch of rainfall. A well-designed
-//           rainwater system can supply 20–40% of a site’s annual water demand and
-//           significantly reduce tanker usage.
-//         </div>
 
 //         {/* Right Circle Badge */}
 //         <div className="absolute right-6 top-25 -translate-y-1/2">
@@ -75,9 +70,6 @@
 //   );
 // }
 
-
-
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -86,9 +78,9 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <div>
-      {/* 🔥 HERO */}
+      {/* 🔥 HERO SECTION */}
       <section className="relative pt-16 sm:pt-20 px-4 sm:px-6 md:px-12 overflow-hidden">
-        {/* 🔹 Dotted Pattern */}
+        {/* 🔹 Dotted Pattern (responsive + safe) */}
         <div className="absolute left-0 top-10 opacity-80 pointer-events-none">
           <div className="grid grid-cols-6 gap-2">
             {[...Array(36)].map((_, i) => (
@@ -108,11 +100,14 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight"
           >
-            Recover your Wasted Potential.
+            The Impact of Expert Solid Waste Management
           </motion.h1>
 
-          <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base md:text-lg">
-            Turn Rain Into a Reliable Water Source
+          <p className="mt-4 text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
+            We provide end-to-end, sustainable waste solutions for cities and
+            industries. Leveraging 20 years of expertise, we transform waste
+            into resources through smart collection, segregation, and
+            eco-friendly processing.
           </p>
 
           {/* 🔹 Buttons */}
@@ -133,8 +128,8 @@ export default function HeroSection() {
         {/* 🔹 Image */}
         <div className="relative w-full h-[220px] sm:h-[280px] md:h-[320px] lg:h-[380px]">
           <Image
-            src="https://images.unsplash.com/photo-1762710964670-cc96a0076f25?q=80&w=1031&auto=format&fit=crop"
-            alt="Rainwater harvesting"
+            src="https://plus.unsplash.com/premium_photo-1663099654523-d3862b7742cd?q=80&w=870&auto=format&fit=crop"
+            alt="Solid Waste Management"
             fill
             className="object-cover"
           />
@@ -143,17 +138,9 @@ export default function HeroSection() {
         {/* 🔹 Overlay */}
         {/* <div className="absolute inset-0 bg-black/20" /> */}
 
-        {/* 🔹 Left Text */}
-        <div className="absolute left-6 sm:left-8 md:left-14 lg:left-16 top-3 sm:top-6 max-w-[85%] sm:max-w-md text-white text-xs sm:text-sm md:text-base font-medium leading-relaxed">
-          Did you know? A 1,000 square foot roof can capture approximately 600
-          gallons of water during just 1 inch of rainfall. A well-designed
-          rainwater system can supply 20–40% of a site’s annual water demand and
-          significantly reduce tanker usage.
-        </div>
-
-        {/* 🔹 Right Badge */}
+        {/* 🔹 Badge */}
         <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2">
-          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-blue-900 text-white rounded-full flex items-center justify-center text-center font-semibold p-2 sm:p-3 md:p-4 text-[10px] sm:text-sm md:text-lg">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-blue-900 text-white rounded-full flex items-center justify-center text-center font-semibold p-3 sm:p-4 text-xs sm:text-sm md:text-lg">
             20 Years of Industry Experience
           </div>
         </div>
