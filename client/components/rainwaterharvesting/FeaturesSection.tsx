@@ -126,7 +126,7 @@ export default function FeaturesSection() {
         Tailored Solutions to revolutionise the way you harvest rain
       </h1>
 
-      <div className="max-w-6xl lg:max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20">
+      <div className="max-w-6xl lg:max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20 px-4 sm:px-6 md:px-12">
         {features.map((item, index) => {
           const isReverse = index % 2 !== 0;
 

@@ -149,7 +149,7 @@ export default function StatsSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-8 sm:mb-12"
+        className="text-center text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium mb-8 sm:mb-12"
       >
         Proven Results. <span className="text-green-600">Powerful Impact.</span>
       </motion.h2>
