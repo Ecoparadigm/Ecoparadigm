@@ -36,10 +36,10 @@ const ClientsSection = () => {
     <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-20">
       {/* HEADER */}
       <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-10">
-        <h2 className="text-xl sm:text-3xl md:text-5xl font-bold">
+        <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium mb-4">
           Our Clients
         </h2>
-        <p className="text-gray-600 mt-2 text-xs sm:text-sm md:text-lg">
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-5 sm:mb-6">
           What began in 2006 as a small practice has grown into a trusted
           partner for clients seeking reliable sustainability solutions.
         </p>
@@ -51,7 +51,7 @@ const ClientsSection = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8"
+        className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
       >
         {logos.map((logo) => (
           <motion.div
@@ -64,7 +64,7 @@ const ClientsSection = () => {
               alt="client logo"
               width={120}
               height={60}
-              className="object-contain w-[80px] sm:w-[100px] md:w-[120px] h-auto"
+              className="object-contain w-[100px] md:w-[120px] h-auto"
             />
           </motion.div>
         ))}
