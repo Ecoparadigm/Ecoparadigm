@@ -40,7 +40,7 @@ export default function StatsSection() {
   ];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 bg-gray-50">
+    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12">
       {/* 🔹 Label */}
       <div className="text-center mb-4 sm:mb-6">
         <span className="text-[10px] sm:text-xs px-3 sm:px-4 py-1 border rounded-full text-gray-500 tracking-wide">

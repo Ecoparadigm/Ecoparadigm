@@ -7,7 +7,7 @@ import HeroSection from "@/components/projects/HeroSection";
 export default function ProjectsPage() {
   return (
     <div>
-      <section className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 py-14 sm:py-16 md:py-20 bg-gray-50">
+      <section className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 py-14 sm:py-16 md:py-20">
         {/* 🔹 TOP CONTENT */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           {/* LEFT */}
