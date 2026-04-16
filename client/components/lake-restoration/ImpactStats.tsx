@@ -258,8 +258,8 @@ export default function ImpactStats() {
       </section>
 
       {/* 🔥 SECTION 2 */}
-      <section className="w-full bg-white pb-14 sm:pb-16 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-10 items-start">
+      <section className="w-full bg-white pb-12 sm:pb-14 md:pb-16 lg:pb-20 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -269,8 +269,9 @@ export default function ImpactStats() {
             transformTemplate={({ x, y }) =>
               `translate3d(${x || 0}, ${y || 0}, 0)`
             }
+            className="max-w-xl"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-4 sm:mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-3 sm:mb-4 md:mb-6">
               Kundalahalli Lake <br />
               Rejuvenation Project
             </h1>
@@ -282,13 +283,14 @@ export default function ImpactStats() {
 
           {/* RIGHT */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             transformTemplate={({ x, y }) =>
               `translate3d(${x || 0}, ${y || 0}, 0)`
             }
+            className="space-y-3 sm:space-y-4 max-w-xl"
           >
             <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">
               Revitalizing Kundalahalli Lake through science-led restoration,
@@ -303,7 +305,7 @@ export default function ImpactStats() {
             </p>
 
             {/* INFO GRID */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 pt-1 sm:pt-2">
               <div>
                 <p className="text-xs sm:text-sm font-semibold">CAPACITY</p>
                 <p className="text-gray-800 text-sm sm:text-base">800 KLD</p>
@@ -323,7 +325,7 @@ export default function ImpactStats() {
             </div>
 
             {/* BUTTON */}
-            <div>
+            <div className="pt-2 sm:pt-3">
               <button className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 text-white rounded-lg text-sm sm:text-base">
                 Talk to Our Expert
               </button>
