@@ -30,12 +30,12 @@ export default function Header() {
       name: "Solid Waste Management",
       href: "/all-services/solid-waste-management",
     },
-    { name: "Energy and Power Systems", href: "/all-services/energy-power" },
+    // { name: "Energy and Power Systems", href: "/all-services/energy-power" },
     {
       name: "Environmental Audits & Net-Zero Strategy",
-      href: "/all-services/environmental-audit",
+      href: "/all-services/environ-audits",
     },
-    { name: "SEWAC", href: "/services/sewac" },
+    // { name: "SEWAC", href: "/services/sewac" },
   ];
 
   const resources = [
