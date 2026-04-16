@@ -254,7 +254,7 @@ const Card: React.FC<CardProps> = ({
       variants={fadeUp}
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 200 }}
-      className="rounded-2xl p-5 sm:p-6 md:p-7 bg-gradient-to-b from-blue-500 to-blue-600 text-white shadow-lg flex flex-col justify-between min-h-[420px] sm:min-h-[480px] md:min-h-[520px]"
+      className="rounded-2xl p-5 sm:p-6 md:p-7 bg-gradient-to-b from-blue-700 to-blue-500 text-white shadow-lg flex flex-col justify-between min-h-[420px] sm:min-h-[480px] md:min-h-[520px]"
     >
       {/* Content */}
       <div>

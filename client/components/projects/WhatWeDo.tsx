@@ -43,7 +43,7 @@ export default function WhatWeDo() {
       {/* 🔥 Heading */}
       <h2
         className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 
-        bg-gradient-to-r from-blue-600 via-teal-300 to-green-500 
+        bg-gradient-to-r from-blue-700 via-teal-500 to-green-700 
         bg-clip-text text-transparent"
       >
         What We Do

@@ -354,9 +354,23 @@ export default function ShowcaseCarouselSection() {
         </div>
 
         {/* CAROUSEL */}
-        <div className="relative overflow-hidden">
-          {/* BUTTONS */}
+        <div className="relative">
           <button
+            onClick={prev}
+            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
+          >
+            <ChevronLeft />
+          </button>
+
+          <button
+            onClick={next}
+            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
+          >
+            <ChevronRight />
+          </button>
+          <div className=" overflow-hidden">
+            {/* BUTTONS */}
+            {/* <button
             onClick={prev}
             className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
           >
@@ -368,54 +382,55 @@ export default function ShowcaseCarouselSection() {
             className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
           >
             <ChevronRight />
-          </button>
+          </button> */}
 
-          {/* 🔥 TRACK */}
-          <motion.div
-            className="flex gap-4 sm:gap-6"
-            animate={{
-              x: `-${index * (100 / visibleCount)}%`,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 20,
-            }}
-          >
-            {cards.map((card, i) => (
-              <div
-                key={i}
-                className="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] bg-[#063737] rounded-2xl overflow-hidden"
-              >
-                {/* IMAGE */}
-                <div className="relative h-[220px] sm:h-[280px] md:h-[320px]">
-                  <Image
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className="object-cover"
-                  />
+            {/* 🔥 TRACK */}
+            <motion.div
+              className="flex gap-4 sm:gap-6"
+              animate={{
+                x: `-${index * (100 / visibleCount)}%`,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 80,
+                damping: 20,
+              }}
+            >
+              {cards.map((card, i) => (
+                <div
+                  key={i}
+                  className="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] bg-[#063737] rounded-2xl overflow-hidden"
+                >
+                  {/* IMAGE */}
+                  <div className="relative h-[220px] sm:h-[280px] md:h-[320px]">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                    />
 
-                  <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4">
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
-                        {card.badge1}
-                      </span>
-                      <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
-                        {card.badge2}
-                      </span>
+                    <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4">
+                      <div className="flex gap-2 flex-wrap">
+                        <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                          {card.badge1}
+                        </span>
+                        <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                          {card.badge2}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* TEXT */}
-                <div className="p-4 sm:p-5">
-                  <h3 className="font-semibold text-lg mb-2">{card.title}</h3>
-                  <p className="text-sm text-gray-300">{card.desc}</p>
+                  {/* TEXT */}
+                  <div className="p-4 sm:p-5">
+                    <h3 className="font-semibold text-lg mb-2">{card.title}</h3>
+                    <p className="text-sm text-gray-300">{card.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
 
         {/* STATS */}

@@ -258,25 +258,26 @@ const InfrastructureSection: React.FC = () => {
 
   return (
     <section className="w-full py-14 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
+      <div className="max-w-7xl">
+        <p className="text-xs sm:text-sm text-gray-600 flex items-center gap-2 mb-2 sm:mb-3">
+          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+          Adaptable Infrastructure
+        </p>
+
+        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-3 sm:mb-4">
+          Underground. Out of sight. <br />
+          <span className="text-green-500">Fit and Forget about it.</span>
+        </h2>
+
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-lg">
+          NaturalSTP is an innovative, biophilic, non-electric wastewater
+          treatment system that removes the complexity and recurring headaches
+          of conventional STPs.
+        </p>
+      </div>
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
         {/* LEFT */}
         <div>
-          <p className="text-xs sm:text-sm text-gray-600 flex items-center gap-2 mb-2 sm:mb-3">
-            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-            Adaptable Infrastructure
-          </p>
-
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-3 sm:mb-4">
-            Underground. Out of sight. <br />
-            <span className="text-green-500">Fit and Forget about it.</span>
-          </h2>
-
-          <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-lg">
-            NaturalSTP is an innovative, biophilic, non-electric wastewater
-            treatment system that removes the complexity and recurring headaches
-            of conventional STPs.
-          </p>
-
           {/* ACCORDION */}
           <motion.div
             variants={container}

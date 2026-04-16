@@ -198,19 +198,92 @@ const ComparisonSection: React.FC = () => {
         </motion.div>
 
         {/* LABELS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 text-center">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 text-center">
           <p className="text-gray-300 font-medium text-lg sm:text-xl md:text-2xl">
             Others Conventional Systems
           </p>
           <p className="text-cyan-400 font-medium text-lg sm:text-xl md:text-2xl">
             NaturalSTP
           </p>
+        </div> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {/* LEFT COLUMN */}
+          <div className="flex flex-col gap-4 sm:gap-6">
+            <p className="text-gray-300 font-medium text-lg sm:text-xl md:text-2xl text-center md:text-center">
+              Others Conventional Systems
+            </p>
+
+            <motion.div
+              initial={{ opacity: 0, x: -80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="border-2 sm:border-4 border-[#1f4d4d] rounded-2xl p-5 sm:p-6 md:p-8 bg-[#063737]"
+            >
+              <motion.ul
+                variants={containerVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="space-y-3 sm:space-y-4 md:space-y-5"
+              >
+                {leftPoints.map((point, index) => (
+                  <motion.li
+                    key={index}
+                    variants={itemVariant}
+                    className="flex items-start gap-2 sm:gap-3"
+                  >
+                    <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 mt-1" />
+                    <span className="text-gray-200 text-sm sm:text-base md:text-lg leading-snug">
+                      {point}
+                    </span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          </div>
+
+          {/* RIGHT COLUMN */}
+          <div className="flex flex-col gap-4 sm:gap-6">
+            <p className="text-cyan-400 font-medium text-lg sm:text-xl md:text-2xl text-center md:text-center">
+              NaturalSTP
+            </p>
+
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true }}
+              className="border-2 sm:border-4 border-[#1f4d4d] rounded-2xl p-5 sm:p-6 md:p-8 bg-gradient-to-br from-[#0b4d4d] to-[#0e6b5f]"
+            >
+              <motion.ul
+                variants={containerVariant}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="space-y-3 sm:space-y-4 md:space-y-5"
+              >
+                {rightPoints.map((point, index) => (
+                  <motion.li
+                    key={index}
+                    variants={itemVariant}
+                    className="flex items-start gap-2 sm:gap-3"
+                  >
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-1" />
+                    <span className="text-gray-100 text-sm sm:text-base md:text-lg leading-snug">
+                      {point}
+                    </span>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          </div>
         </div>
 
         {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"> */}
           {/* LEFT CARD */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -237,10 +310,10 @@ const ComparisonSection: React.FC = () => {
                 </motion.li>
               ))}
             </motion.ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* RIGHT CARD */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -267,8 +340,8 @@ const ComparisonSection: React.FC = () => {
                 </motion.li>
               ))}
             </motion.ul>
-          </motion.div>
-        </div>
+          </motion.div> */}
+        {/* </div> */}
       </div>
     </section>
   );
