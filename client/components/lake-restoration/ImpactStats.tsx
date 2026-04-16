@@ -191,7 +191,6 @@ export default function ImpactStats() {
     <div>
       {/* 🔥 SECTION 1 */}
       <section className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 py-14 sm:py-16 md:py-20 bg-white">
-        
         {/* 🔹 Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -261,12 +260,15 @@ export default function ImpactStats() {
       {/* 🔥 SECTION 2 */}
       <section className="w-full bg-white pb-14 sm:pb-16 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-10 items-start">
-          
           {/* LEFT */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            transformTemplate={({ x, y }) =>
+              `translate3d(${x || 0}, ${y || 0}, 0)`
+            }
           >
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-4 sm:mb-6">
               Kundalahalli Lake <br />
@@ -280,10 +282,13 @@ export default function ImpactStats() {
 
           {/* RIGHT */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-3 sm:space-y-4"
+            viewport={{ once: true }}
+            transformTemplate={({ x, y }) =>
+              `translate3d(${x || 0}, ${y || 0}, 0)`
+            }
           >
             <p className="text-gray-800 text-sm sm:text-base md:text-lg leading-relaxed">
               Revitalizing Kundalahalli Lake through science-led restoration,
@@ -319,12 +324,11 @@ export default function ImpactStats() {
 
             {/* BUTTON */}
             <div>
-              <button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-black font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg transition text-sm sm:text-base">
+              <button className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 text-white rounded-lg text-sm sm:text-base">
                 Talk to Our Expert
               </button>
             </div>
           </motion.div>
-
         </div>
       </section>
     </div>
