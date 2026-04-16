@@ -68,7 +68,6 @@ export default function SuccessShowcaseCarousel() {
   return (
     <section className="w-full pb-14 sm:pb-16 md:pb-20 lg:pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16">
-        
         {/* HEADING */}
         <div className="text-center mb-10 sm:mb-12 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900">
@@ -90,10 +89,7 @@ export default function SuccessShowcaseCarousel() {
           <div className="absolute left-0 top-0 h-full w-10 bg-gradient-to-r from-[#f5f5f5] to-transparent z-10" />
           <div className="absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-[#f5f5f5] to-transparent z-10" />
 
-          <motion.div
-            className="flex gap-6"
-            style={{ x }}
-          >
+          <motion.div className="flex gap-6" style={{ x }}>
             {[...projects, ...projects].map((item, index) => (
               <div
                 key={index}
