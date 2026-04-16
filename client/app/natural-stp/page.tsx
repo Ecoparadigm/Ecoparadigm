@@ -13,11 +13,11 @@ export default function NaturalSTPPage() {
       <WaterHeroSection />
       <SolutionSection />
       <AwardsSection />
-      <ComparisonSection />
+      {/* <ComparisonSection /> */}
       <InfrastructureSection />
       <ShowcaseCarouselSection />
       <WhatWeOffer />
-      <ContactSection />
+      {/* <ContactSection /> */}
     </>
   );
 }
