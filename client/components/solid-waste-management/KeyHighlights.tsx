@@ -1,27 +1,3 @@
-// "use client";
-
-// import HighlightCard from "./HighlightCard";
-
-// export default function KeyHighlights() {
-//   return (
-//     <section className="w-full bg-white py-10 sm:py-14 md:py-16 lg:py-20 px-4 sm:px-6 lg:px-20 xl:px-24 2xl:px-32">
-//       <div className="max-w-7xl mx-auto ">
-//         {/* Title */}
-//         <h2 className="text-center text-xl sm:text-2xl md:text-3xl font-semibold text-blue-900 mb-8 md:mb-12">
-//           Key Highlights
-//         </h2>
-
-//         {/* Cards */}
-//         <div className="flex flex-col gap-8 md:gap-10">
-//           {highlights.map((item, index) => (
-//             <HighlightCard key={index} {...item} />
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
 "use client";
 
 import HighlightCard from "./HighlightCard";
