@@ -31,7 +31,7 @@ const services = [
 
 export default function WhatWeOffer() {
   return (
-    <section className="w-full py-14 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
+    <section className="w-full pb-14 sm:pb-16 md:pb-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900">

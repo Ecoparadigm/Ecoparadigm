@@ -1,3 +1,97 @@
+// "use client";
+
+// import { motion } from "framer-motion";
+// import Image from "next/image";
+
+// export default function HeroSection() {
+//   return (
+//     <section className="w-full min-h-[80vh] md:min-h-screen bg-[#062f2f] flex items-center px-4 sm:px-6 md:px-12 lg:px-16">
+//       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center w-full max-w-7xl mx-auto">
+//         {/* LEFT CONTENT */}
+//         <div>
+//           {/* Tag */}
+//           <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4 flex items-center gap-2">
+//             <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+//             Rainwater Solutions
+//           </p>
+
+//           {/* Heading */}
+//           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+//             Recover Your{" "}
+//             <span className="text-green-400">Wasted Potential</span>
+//           </h1>
+
+//           {/* Description */}
+//           <motion.p
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ duration: 0.8, delay: 0.2 }}
+//             className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-lg"
+//           >
+//             Turn rain into a reliable water source. Reduce dependency on tankers
+//             and build a sustainable water system for long-term savings.
+//           </motion.p>
+
+//           {/* Buttons */}
+//           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+//             <button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 transition px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-white font-medium flex items-center justify-center gap-2">
+//               Learn More
+//               <span className="bg-white text-black rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm">
+//                 →
+//               </span>
+//             </button>
+
+//             <button className="w-full sm:w-auto border border-gray-400 text-white hover:bg-white hover:text-black transition px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium">
+//               Talk to Us
+//             </button>
+//           </div>
+//         </div>
+
+//         {/* RIGHT IMAGE */}
+//         <div className="relative mt-8 md:mt-0">
+//           {/* IMAGE */}
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             transition={{ duration: 0.8 }}
+//           >
+//             <Image
+//               src="https://images.unsplash.com/photo-1762710964670-cc96a0076f25?q=80&w=1031&auto=format&fit=crop"
+//               alt="Rainwater harvesting"
+//               width={500}
+//               height={500}
+//               className="rounded-xl w-full h-[260px] sm:h-[350px] md:h-[500px] object-cover"
+//             />
+//           </motion.div>
+
+//           {/* INFO CARD (LEFT) */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 0.6 }}
+//             className="absolute top-4 sm:top-6 left-4 sm:left-6 bg-gray-800/80 backdrop-blur-md p-3 sm:p-4 rounded-lg max-w-[220px] sm:max-w-xs text-white"
+//           >
+//             <p className="text-xs sm:text-sm text-gray-200 leading-snug">
+//               A 1,000 sq.ft roof can capture ~600 gallons per inch of rainfall,
+//               reducing tanker dependency significantly.
+//             </p>
+//           </motion.div>
+
+//           {/* BADGE CARD (RIGHT) */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             transition={{ delay: 0.9 }}
+//             className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 text-white rounded-lg px-4 py-3 text-sm sm:text-base font-semibold"
+//           >
+//             20+ Years Experience
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -5,79 +99,84 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div>
-      {/* 🔥 HERO */}
-      <section className="relative pt-16 sm:pt-20 px-4 sm:px-6 md:px-12 overflow-hidden">
-        {/* 🔹 Dotted Pattern */}
-        <div className="absolute left-0 top-10 opacity-80 pointer-events-none">
-          <div className="grid grid-cols-6 gap-2">
-            {[...Array(36)].map((_, i) => (
-              <div
-                key={i}
-                className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-300 rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* 🔹 Content */}
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black leading-tight"
-          >
-            Recover your Wasted Potential.
-          </motion.h1>
-
-          <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base md:text-lg">
-            Turn Rain Into a Reliable Water Source
+    <section className="w-full bg-[#062f2f] flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center w-full max-w-7xl mx-auto">
+        {/* LEFT CONTENT */}
+        <div>
+          <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+            Rainwater Solutions
           </p>
 
-          {/* 🔹 Buttons */}
-          <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <button className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 border border-black rounded-lg hover:bg-black hover:text-white transition text-sm sm:text-base">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+            Recover Your{" "}
+            <span className="text-green-400">Wasted Potential</span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-lg"
+          >
+            Turn rain into a reliable water source. Reduce dependency on tankers
+            and build a sustainable water system for long-term savings.
+          </motion.p>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 transition px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-white font-medium flex items-center justify-center gap-2">
               Learn More
+              <span className="bg-white text-black rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm">
+                →
+              </span>
             </button>
 
-            <button className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition text-sm sm:text-base">
+            <button className="w-full sm:w-auto border border-gray-400 text-white hover:bg-white hover:text-black transition px-5 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium">
               Talk to Us
             </button>
           </div>
         </div>
-      </section>
 
-      {/* 🔥 IMAGE SECTION */}
-      <div className="max-w-7xl mx-auto mt-10 sm:mt-12 px-4 sm:px-6 md:px-12 relative rounded-2xl overflow-hidden">
-        {/* 🔹 Image */}
-        <div className="relative w-full h-[220px] sm:h-[280px] md:h-[320px] lg:h-[380px]">
-          <Image
-            src="https://images.unsplash.com/photo-1762710964670-cc96a0076f25?q=80&w=1031&auto=format&fit=crop"
-            alt="Rainwater harvesting"
-            fill
-            className="object-cover"
-          />
-        </div>
+        {/* RIGHT IMAGE */}
+        <div className="relative mt-6 md:mt-0">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1762710964670-cc96a0076f25?q=80&w=1031&auto=format&fit=crop"
+              alt="Rainwater harvesting"
+              width={500}
+              height={500}
+              className="rounded-xl w-full h-[220px] sm:h-[280px] md:h-[360px] lg:h-[420px] object-cover"
+            />
+          </motion.div>
 
-        {/* 🔹 Overlay */}
-        {/* <div className="absolute inset-0 bg-black/20" /> */}
+          {/* INFO CARD */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="absolute top-4 sm:top-6 left-4 sm:left-6 bg-gray-800/80 backdrop-blur-md p-3 sm:p-4 rounded-lg max-w-[220px] sm:max-w-xs text-white"
+          >
+            <p className="text-xs sm:text-sm text-gray-200 leading-snug">
+              A 1,000 sq.ft roof can capture ~600 gallons per inch of rainfall,
+              reducing tanker dependency significantly.
+            </p>
+          </motion.div>
 
-        {/* 🔹 Left Text */}
-        <div className="absolute left-6 sm:left-8 md:left-14 lg:left-16 top-3 sm:top-6 max-w-[85%] sm:max-w-md text-white text-xs sm:text-sm md:text-base font-medium leading-relaxed">
-          Did you know? A 1,000 square foot roof can capture approximately 600
-          gallons of water during just 1 inch of rainfall. A well-designed
-          rainwater system can supply 20–40% of a site’s annual water demand and
-          significantly reduce tanker usage.
-        </div>
-
-        {/* 🔹 Right Badge */}
-        <div className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2">
-          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 bg-blue-900 text-white rounded-full flex items-center justify-center text-center font-semibold p-2 sm:p-3 md:p-4 text-[10px] sm:text-sm md:text-lg">
-            20 Years of Industry Experience
-          </div>
+          {/* BADGE */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9 }}
+            className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 bg-green-500 text-white rounded-lg px-4 py-3 text-sm sm:text-base font-semibold"
+          >
+            20+ Years Experience
+          </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

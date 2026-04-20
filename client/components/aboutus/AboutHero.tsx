@@ -1,90 +1,70 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <section className="relative w-full min-h-[70vh] flex items-center px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 text-white overflow-hidden">
-      {/* 🔥 Background Image */}
-      <Image
-        src="https://images.unsplash.com/photo-1697898783638-d1e81c7ebab1?q=80&w=1032&auto=format&fit=crop"
-        alt="About Background"
-        fill
-        priority
-        className="object-cover"
-      />
-
-      {/* 🔥 Dark overlay */}
-      <div className="absolute inset-0 bg-black/70" />
-
-      {/* 🔥 Content */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-16 items-center w-full">
+    <section className="w-full bg-[#062f2f] flex items-center px-4 sm:px-6 md:px-12 lg:px-16 py-12 md:py-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center w-full max-w-7xl mx-auto">
         {/* LEFT CONTENT */}
-        <motion.div
-          className="max-w-xl"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Tag */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="inline-block border border-green-400 text-green-400 text-[10px] sm:text-xs px-3 py-1 rounded-full mb-3 sm:mb-4"
-          >
-            About us
-          </motion.div>
+        <div>
+          <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+            About Us
+          </p>
 
-          {/* Heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-3 sm:mb-4"
-          >
-            Driven By Purpose <br /> And Impact
-          </motion.h1>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 sm:mb-6">
+            Driven By Purpose <span className="text-green-400">And Impact</span>
+          </h1>
 
-          {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-gray-300 text-xs sm:text-sm md:text-base max-w-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-300 text-sm sm:text-base mb-6 sm:mb-8 max-w-lg"
           >
             Over two decades of delivering measurable environmental and economic
-            value across India.
+            value across India through innovative and sustainable wastewater
+            treatment solutions.
           </motion.p>
-        </motion.div>
 
-        {/* RIGHT SIDE (ROTATION ANIMATION) */}
-        <div className="flex justify-center md:justify-end mt-8 md:mt-0">
-          <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center">
-            <motion.div
-              initial={{ rotate: 0, opacity: 0, scale: 0.8 }}
-              animate={{ rotate: 360, opacity: 1, scale: 1 }}
-              transition={{
-                duration: 3,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center"
-            >
-              {/* Radial shape */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 relative">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-1.5 sm:w-2 h-5 sm:h-6 bg-white/40 rounded-full"
-                    style={{
-                      transform: `rotate(${i * 60}deg) translateY(-20px)`,
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </div>
+          <button className="w-full sm:w-auto bg-green-500 hover:bg-green-600 transition px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-white font-medium flex items-center justify-center sm:justify-start gap-2">
+            Learn More
+            <span className="bg-white text-black rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm">
+              →
+            </span>
+          </button>
+        </div>
+
+        {/* RIGHT IMAGE */}
+        <div className="relative mt-6 md:mt-0">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Image
+              src="https://plus.unsplash.com/premium_photo-1661825536186-19606cd9a0f1?q=80&w=419&auto=format&fit=crop"
+              alt="About"
+              width={500}
+              height={500}
+              className="rounded-xl w-full h-[220px] sm:h-[280px] md:h-[360px] lg:h-[420px] object-cover"
+            />
+          </motion.div>
+
+          {/* FLOATING CARD */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 bg-gray-800/80 backdrop-blur-md p-3 sm:p-4 rounded-lg max-w-[220px] sm:max-w-xs text-white"
+          >
+            <p className="text-xs sm:text-sm text-gray-200 leading-snug">
+              “We combine sustainability with innovation to deliver long-term
+              environmental impact across industries.”
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
