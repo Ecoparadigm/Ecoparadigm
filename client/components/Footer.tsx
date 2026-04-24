@@ -11,7 +11,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 py-10 sm:py-12">
+    <footer className="bg-[#062f2f] text-white px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 py-10 sm:py-12">
       {/* 🔥 TOP GRID */}
       <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 max-w-7xl mx-auto">
         {/* LEFT SECTION */}

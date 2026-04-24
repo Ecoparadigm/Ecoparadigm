@@ -48,7 +48,7 @@ export default function Header() {
   return (
     <header className="w-full fixed top-0 left-0 z-50">
       {/* 🔹 Top Bar */}
-      <div className="bg-black text-white text-xs sm:text-sm px-4 sm:px-6 py-1.5 flex flex-wrap gap-2">
+      <div className="bg-[#062f2f] text-white text-xs sm:text-sm px-4 sm:px-6 py-1.5 flex flex-wrap gap-2">
         <p>For Enquiry: +91 9448077404</p>
         <span className="hidden sm:inline">|</span>
         <p>info@ecoparadigm.com</p>
@@ -136,7 +136,7 @@ export default function Header() {
             <Link href="/aboutus">About Us</Link>
           </nav>
 
-          <button className="bg-black text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition">
+          <button className="bg-[#062f2f] text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition">
             Contact Us
           </button>
         </div>
@@ -235,7 +235,7 @@ export default function Header() {
 
             <button
               onClick={closeMobileMenu}
-              className="w-full bg-black text-white py-2 rounded-lg"
+              className="w-full bg-[#062f2f] text-white py-2 rounded-lg"
             >
               Contact Us
             </button>

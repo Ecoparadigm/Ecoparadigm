@@ -37,6 +37,12 @@ export default function ImpactStats() {
             <span className="text-green-500">economic </span> value across
             India.
           </h2>
+          <p className="text-gray-600 mt-4 text-lg ">
+            Our innovative approaches are shaping a sustainable future. We
+            design systems that deliver long-term environmental impact, focused
+            on efficiency, resilience, and scalability, and built to create
+            value for both people and the planet.
+          </p>
         </motion.div>
 
         {/* 🔹 Stats */}
