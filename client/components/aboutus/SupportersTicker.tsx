@@ -13,11 +13,11 @@ const logos = [
 
 export default function SupportersTicker() {
   return (
-    <section className="pt-4 sm:pt-5 pb-8 sm:pb-10 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 overflow-hidden">
+    <section className="py-10 sm:py-10 md:py-16 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 overflow-hidden bg-[#062f2f]">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-6 sm:mb-8 md:mb-10">
         <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 bg-green-500 rounded-full"></div>
-        <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-700">
+        <p className="text-sm sm:text-base md:text-lg font-semibold text-gray-200">
           Our Trusted Supporters
         </p>
       </div>

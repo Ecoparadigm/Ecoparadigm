@@ -13,10 +13,10 @@ const logos = [
 
 export default function SupportersTicker() {
   return (
-    <section className="pt-4 sm:pt-5 pb-8 sm:pb-10 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 overflow-hidden">
+    <section className="py-10 sm:py-10 md:py-16 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 overflow-hidden bg-[#062f2f]">
       {/* Heading */}
       <div className="flex items-center gap-2 mb-6 sm:mb-8 md:mb-10 max-w-lg">
-        <p className="text-sm sm:text-base md:text-lg">
+        <p className="text-sm sm:text-base md:text-lg text-gray-200">
           Trusted globally by State Governments, Fortune 500 companies, and 500+
           clients across 23 Indian states and 12 countries.
         </p>

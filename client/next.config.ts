@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       "cdn.pixabay.com",
       "randomuser.me",
       "picsum.photos",
+      "upload.wikimedia.org",
     ],
   },
   typescript: {
