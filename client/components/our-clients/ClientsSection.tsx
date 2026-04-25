@@ -36,9 +36,9 @@ const ClientsSection = () => {
     <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-20">
       {/* HEADER */}
       <div className="max-w-5xl mx-auto text-center mb-8 sm:mb-10">
-        <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium mb-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
           Our Clients
-        </h2>
+        </h1>
         <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-5 sm:mb-6">
           What began in 2006 as a small practice has grown into a trusted
           partner for clients seeking reliable sustainability solutions.
