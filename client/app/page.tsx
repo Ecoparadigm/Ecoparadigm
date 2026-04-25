@@ -1,5 +1,6 @@
 "use client";
 import HeroSection from "@/components/homepage/HeroSection";
+import HeroSection2 from "@/components/projects/HeroSection";
 import SupportersGrid from "@/components/homepage/SupportersGrid";
 import Testimonials from "@/components/rainwaterharvesting/Testimonials";
 import AboutStats from "@/components/homepage/AboutStats";
@@ -15,6 +16,7 @@ export default function Page() {
       <AboutStats />
       <SupportersGrid />
       <FAQSection />
+      <HeroSection2 />
     </>
   );
 }

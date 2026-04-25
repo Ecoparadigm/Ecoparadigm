@@ -35,14 +35,13 @@ export default function Header() {
       name: "Environmental Audits & Net-Zero Strategy",
       href: "/all-services/environ-audits",
     },
-    // { name: "SEWAC", href: "/services/sewac" },
   ];
 
   const resources = [
     { name: "Blogs", href: "/blogs" },
     { name: "Our Clients", href: "/resources/our-clients" },
     { name: "Awards", href: "/aboutus" },
-    { name: "Careers", href: "/careers" },
+    { name: "Careers", href: "/contact" },
   ];
 
   return (
@@ -136,9 +135,12 @@ export default function Header() {
             <Link href="/aboutus">About Us</Link>
           </nav>
 
-          <button className="bg-[#062f2f] text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition">
+          <Link
+            href="/contact"
+            className="bg-[#062f2f] text-white px-5 py-2 rounded-lg hover:bg-gray-800 transition"
+          >
             Contact Us
-          </button>
+          </Link>
         </div>
 
         {/* 🔥 Mobile Menu Button */}
@@ -233,12 +235,19 @@ export default function Header() {
               About Us
             </Link>
 
-            <button
+            {/* <button
               onClick={closeMobileMenu}
               className="w-full bg-[#062f2f] text-white py-2 rounded-lg"
             >
               Contact Us
-            </button>
+            </button> */}
+            <Link
+              href="/contact"
+              onClick={closeMobileMenu}
+              className="w-full bg-[#062f2f] text-white py-2 flex items-center justify-center rounded-lg"
+            >
+              Contact Us
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
