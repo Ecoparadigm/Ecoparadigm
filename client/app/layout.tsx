@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={inter.className}>
       <body>
         <Header />
-        <main className="pt-25">{children}</main>
+        <main className="pt-20 md:pt-24">{children}</main>
         <Footer />
       </body>
     </html>
