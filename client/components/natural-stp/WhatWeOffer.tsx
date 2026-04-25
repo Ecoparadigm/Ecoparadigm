@@ -46,7 +46,7 @@ const Card: React.FC<CardProps> = ({
       variants={fadeUp}
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ type: "spring", stiffness: 200 }}
-      className="rounded-2xl p-5 sm:p-6 md:p-7 bg-gradient-to-b from-blue-700 to-blue-500 text-white shadow-lg flex flex-col justify-between min-h-[420px] sm:min-h-[480px] md:min-h-[520px]"
+      className="rounded-2xl p-5 sm:p-6 md:p-7 bg-gradient-to-b from-green-800 to-green-600 text-white shadow-lg flex flex-col justify-between min-h-[420px] sm:min-h-[480px] md:min-h-[520px]"
     >
       {/* Content */}
       <div>
@@ -54,15 +54,15 @@ const Card: React.FC<CardProps> = ({
           {title}
         </h3>
 
-        <p className="text-sm sm:text-base md:text-lg text-blue-100 mb-4 sm:mb-6 leading-relaxed">
+        <p className="text-sm sm:text-base md:text-lg text-white mb-4 sm:mb-6 leading-relaxed">
           {description}
         </p>
 
-        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-blue-100 mb-2 sm:mb-3">
+        <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 sm:mb-3">
           Key Advantages
         </h4>
 
-        <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-md text-blue-50">
+        <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm md:text-md text-white">
           {points.map((point, index) => (
             <li key={index} className="flex items-start gap-2 sm:gap-3">
               <div className="mt-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-black flex items-center justify-center flex-shrink-0">
@@ -175,7 +175,7 @@ const WhatWeOffer = () => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center gap-3"
           >
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-blue-500 flex items-center justify-center shadow-md">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-green-500 flex items-center justify-center shadow-md">
               <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white rounded-full"></div>
             </div>
             <div>
