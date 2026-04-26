@@ -22,7 +22,7 @@ export default function ContactSection() {
           whileInView="show"
           viewport={{ once: true }}
           variants={{ show: { transition: { staggerChildren: 0.15 } } }}
-          className="space-y-5 sm:space-y-6"
+          className="space-y-5 sm:space-y-6 order-2 lg:order-1"
         >
           {/* Card */}
           {[
@@ -84,11 +84,11 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 md:p-8"
+          className="bg-white border border-gray-200 rounded-xl p-5 sm:p-6 md:p-8 order-1 lg:order-2"
         >
           {/* Heading */}
           <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-green-600 mb-6">
-            Contact Information
+            To get in touch
           </h2>
 
           <form className="space-y-4 sm:space-y-5">
@@ -99,7 +99,7 @@ export default function ContactSection() {
               </label>
               <input
                 type="text"
-                placeholder="Jane Smith"
+                placeholder="Pattu"
                 className="w-full mt-1 h-10 sm:h-12 rounded-lg bg-gray-100 px-4 outline-none text-sm sm:text-base"
               />
             </div>
@@ -111,7 +111,7 @@ export default function ContactSection() {
               </label>
               <input
                 type="email"
-                placeholder="jane@mail.com"
+                placeholder="pattu@gmail.com"
                 className="w-full mt-1 h-10 sm:h-12 rounded-lg bg-gray-100 px-4 outline-none text-sm sm:text-base"
               />
             </div>
