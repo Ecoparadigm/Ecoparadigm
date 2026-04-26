@@ -12,6 +12,12 @@ const nextConfig: NextConfig = {
       "picsum.photos",
       "upload.wikimedia.org",
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "abcpvjjcfggylnxbyrsi.supabase.co"
+      },
+    ],
   },
   typescript: {
     ignoreBuildErrors: true,

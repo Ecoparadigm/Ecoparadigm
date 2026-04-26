@@ -1,10 +1,8 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
-
-/* ---------------- ANIMATION ---------------- */
+import { supabase } from "@/utils/supabase";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,16 +20,40 @@ const stagger = {
   },
 };
 
-/* ---------------- DATA ---------------- */
-
-const logos = Array.from({ length: 40 }, (_, i) => ({
-  id: i,
-  src: `https://picsum.photos/200/100?random=${i}`,
-}));
-
-/* ---------------- COMPONENT ---------------- */
-
 const ClientsSection = () => {
+  const [logos, setLogos] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchLogos = async () => {
+      const { data, error } = await supabase.storage
+        .from("client-logos")
+        .list("", { limit: 100 });
+
+      if (error) {
+        console.error(error);
+        setLoading(false);
+        return;
+      }
+
+      const urls = data.map((file, i) => {
+        const { data: publicUrlData } = supabase.storage
+          .from("client-logos")
+          .getPublicUrl(file.name);
+
+        return {
+          id: i,
+          src: publicUrlData.publicUrl,
+        };
+      });
+
+      setLogos(urls);
+      setLoading(false);
+    };
+
+    fetchLogos();
+  }, []);
+
   return (
     <section className="py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-12 lg:px-20">
       {/* HEADER */}
@@ -45,30 +67,33 @@ const ClientsSection = () => {
         </p>
       </div>
 
-      {/* GRID */}
-      <motion.div
-        variants={stagger}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
-      >
-        {logos.map((logo) => (
-          <motion.div
-            key={logo.id}
-            variants={fadeUp}
-            className="flex items-center justify-center"
-          >
-            <Image
-              src={logo.src}
-              alt="client logo"
-              width={120}
-              height={60}
-              className="object-contain w-[100px] md:w-[120px] h-auto"
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* LOADING STATE */}
+      {loading ? (
+        <div className="flex justify-center items-center py-16">
+          <div className="w-10 h-10 border-4 border-gray-300 border-t-gray-900 rounded-full animate-spin"></div>
+        </div>
+      ) : (
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
+        >
+          {logos.map((logo) => (
+            <motion.div
+              key={logo.id}
+              variants={fadeUp}
+              className="flex items-center justify-center"
+            >
+              <img
+                src={logo.src}
+                alt="client logo"
+                className="object-contain w-[100px] md:w-[120px] h-auto"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
     </section>
   );
 };

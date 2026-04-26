@@ -8,8 +8,8 @@ export default function EnvironAuditsPage() {
   return (
     <>
       <EnergyAssessment />
-      <SupportersTicker />
       <WhatWeOffer />
+      <SupportersTicker />
       <SuccessShowcase />
       <ContactSection />
     </>

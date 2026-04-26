@@ -36,7 +36,7 @@ export default function TrustedSection() {
               transition={{ duration: 0.6 }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1514820720301-4c4790309f46?q=80&w=1032&auto=format&fit=crop"
+                src="/Awards/Rectangle 5402.png"
                 alt="Award Ceremony"
                 width={800}
                 height={500}

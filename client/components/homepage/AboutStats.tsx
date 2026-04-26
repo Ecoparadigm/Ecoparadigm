@@ -61,10 +61,10 @@ export default function AboutStats() {
           <motion.div variants={fadeUp} className="md:col-span-2">
             <div className="flex items-center gap-2 mb-3">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <p className="text-xs sm:text-sm text-gray-600">About Us</p>
+              <p className="text-sm md:text-md text-gray-600">About Us</p>
             </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-medium leading-[1.2] tracking-[-0.02em] max-w-3xl">
+            <h2 className="text-xl sm:text-2xl md:text-5xl font-medium leading-[1.2] tracking-[-0.02em] max-w-3xl">
               We are a{" "}
               <span className="text-green-500">
                 6-time National Award winning

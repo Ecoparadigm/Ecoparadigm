@@ -95,7 +95,7 @@ export default function ImpactStats() {
         className="rounded-2xl overflow-hidden"
       >
         <Image
-          src="https://images.unsplash.com/photo-1594122230689-45899d9e6f69?q=80&w=870&auto=format&fit=crop"
+          src="/Awards/Rectangle 5402.png"
           alt="Impact"
           width={1200}
           height={600}
