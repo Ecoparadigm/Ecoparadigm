@@ -1,7 +1,9 @@
-import React from "react";
+import KnowledgeCenter from "@/components/blogs/KnowledgeCenter";
 
-const page = () => {
-  return <div></div>;
-};
-
-export default page;
+export default function BlogsPage() {
+  return (
+    <>
+      <KnowledgeCenter />
+    </>
+  );
+}

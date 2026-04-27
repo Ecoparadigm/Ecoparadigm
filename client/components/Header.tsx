@@ -38,7 +38,7 @@ export default function Header() {
   ];
 
   const resources = [
-    { name: "Blogs", href: "/blogs" },
+    { name: "Blogs", href: "/resources/blogs" },
     { name: "Our Clients", href: "/resources/our-clients" },
     { name: "Awards", href: "/aboutus" },
     { name: "Careers", href: "/contact" },
