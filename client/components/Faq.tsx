@@ -54,46 +54,70 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="w-full px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 py-14 sm:py-16 md:py-20">
-      <div className="max-w-3xl sm:max-w-4xl md:max-w-5xl mx-auto">
+    <section className="w-full px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 py-20 md:py-28 bg-gray-50 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      
+      <div className="max-w-3xl sm:max-w-4xl md:max-w-5xl mx-auto relative z-10">
         {/* 🔥 TOP */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-14">
-          <p className="text-md text-gray-500 mb-2">
-            Frequently Asked Questions (FAQ)
-          </p>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-12 sm:mb-16 md:mb-20"
+        >
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-xs sm:text-sm font-extrabold tracking-wider text-green-700 uppercase">
+              Frequently Asked Questions (FAQ)
+            </span>
+          </div>
 
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.02em]">
-            What You’re Thinking, We’ve Answered.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight">
+            What You’re Thinking,{" "}
+            <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+              We’ve Answered.
+            </span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* 🔥 FAQ LIST */}
-        <div className="space-y-3 sm:space-y-4">
+        <div className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
                 key={index}
-                className="border border-gray-200 rounded-xl bg-white hover:shadow-sm transition"
+                className={`border rounded-2xl bg-white overflow-hidden transition-all duration-300 ${
+                  isOpen 
+                    ? "border-green-200 shadow-xl shadow-green-500/5 ring-1 ring-green-500/10" 
+                    : "border-gray-200 shadow-sm hover:shadow-md hover:border-gray-300"
+                }`}
               >
                 {/* Question */}
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left"
+                  className="w-full px-6 sm:px-8 py-5 sm:py-6 flex items-center justify-between text-left group"
                 >
-                  <span className="text-sm sm:text-base md:text-lg font-medium text-gray-900">
+                  <span className={`text-base sm:text-lg md:text-xl font-bold transition-colors duration-300 ${isOpen ? "text-green-700" : "text-gray-900 group-hover:text-green-600"}`}>
                     {faq.question}
                   </span>
 
                   {/* Animated Icon */}
-                  <motion.span
+                  <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="text-xl text-gray-400"
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                      isOpen ? "bg-green-100 text-green-600" : "bg-gray-50 text-gray-400 group-hover:bg-green-50 group-hover:text-green-500"
+                    }`}
                   >
-                    +
-                  </motion.span>
+                    <span className="text-xl sm:text-2xl font-light leading-none">+</span>
+                  </motion.div>
                 </button>
 
                 {/* Answer */}
@@ -103,16 +127,17 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
                       className="overflow-hidden"
                     >
-                      <div className="px-4 sm:px-6 pb-4 sm:pb-5 text-sm sm:text-base text-gray-600 leading-relaxed">
+                      <div className="px-6 sm:px-8 pb-6 sm:pb-8 text-base sm:text-lg text-gray-600 leading-relaxed font-medium">
+                        <div className="w-12 h-1 bg-green-200 rounded-full mb-4"></div>
                         {faq.answer}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

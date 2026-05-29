@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -37,49 +38,78 @@ const services = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } },
+};
+
 export default function WhatWeDo() {
   return (
     <section className="pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-20 bg-white text-center">
       {/* 🔥 Heading */}
-      <h2
-        className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 
-        bg-gradient-to-r from-blue-700 via-teal-500 to-green-700 
-        bg-clip-text text-transparent"
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
       >
-        What We Do
-      </h2>
+        <h2
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-4 tracking-tight 
+          bg-gradient-to-r from-gray-900 to-green-700 
+          bg-clip-text text-transparent"
+        >
+          What We Do
+        </h2>
 
-      {/* Subtitle */}
-      <p className="text-gray-600 max-w-3xl md:max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-16 text-sm sm:text-base md:text-lg">
-        We design solutions for the toughest environmental problems, sustainably
-        and optimally
-      </p>
+        {/* Subtitle */}
+        <p className="text-gray-600 max-w-3xl md:max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-16 text-sm sm:text-base md:text-lg leading-relaxed">
+          We design solutions for the toughest environmental problems, sustainably
+          and optimally
+        </p>
+      </motion.div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-y-10 sm:gap-y-12 md:gap-y-16 gap-x-6 sm:gap-x-10 md:gap-x-16 lg:gap-x-20">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-y-10 sm:gap-y-12 md:gap-y-16 gap-x-6 sm:gap-x-10 md:gap-x-16 lg:gap-x-20"
+      >
         {services.map((item, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={itemVariants}
             className="flex flex-col items-center group cursor-pointer"
           >
             {/* 🔥 Circle */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden mb-3 sm:mb-4 md:mb-5 transition duration-300 group-hover:scale-105">
-              <Image
-                src={item.img}
-                alt={item.title}
-                width={160}
-                height={160}
-                className="w-full h-full object-cover"
-              />
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 rounded-full mb-4 sm:mb-5 transition-all duration-500 group-hover:-translate-y-2">
+              <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-green-400/30 transition-colors duration-500 z-10 pointer-events-none shadow-[0_0_0_0_rgba(34,197,94,0)] group-hover:shadow-[0_0_30px_0_rgba(34,197,94,0.2)]" />
+              <div className="w-full h-full rounded-full overflow-hidden border border-gray-100 shadow-xl shadow-gray-200/50">
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  width={160}
+                  height={160}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+              </div>
             </div>
 
             {/* 🔥 Title */}
-            <p className="text-xs sm:text-sm md:text-base text-gray-800 max-w-[140px] sm:max-w-[160px] md:max-w-[200px] leading-snug">
+            <p className="text-xs sm:text-sm md:text-base font-bold text-gray-800 max-w-[140px] sm:max-w-[160px] md:max-w-[200px] leading-snug group-hover:text-green-600 transition-colors duration-300">
               {item.title}
             </p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

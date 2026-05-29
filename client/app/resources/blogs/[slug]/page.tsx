@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 type BlogBlock =
   | { type: "paragraph"; text: string }
@@ -250,6 +251,55 @@ const blogs: Blog[] = [
   },
 ];
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const blog = blogs.find((b) => b.slug === slug);
+  if (!blog) return {};
+
+  const firstParagraph = blog.content.find((b) => b.type === "paragraph") as
+    | { type: "paragraph"; text: string }
+    | undefined;
+  const description = firstParagraph
+    ? firstParagraph.text
+    : `Read about ${blog.title} on Ecoparadigm's knowledge center.`;
+
+  return {
+    title: `${blog.title} | Ecoparadigm Knowledge Center`,
+    description: `${description} Insights from Ecoparadigm — India’s 6-time National Award-winning environmental engineering company and pioneers of NaturalSTP™.`,
+    keywords: [
+      blog.title,
+      "NaturalSTP",
+      "Ecoparadigm",
+      "environmental engineering India",
+      "wastewater treatment",
+      "water treatment blog",
+    ],
+    alternates: {
+      canonical: `https://ecoparadigm.in/resources/blogs/${slug}`,
+    },
+    openGraph: {
+      title: blog.title,
+      description,
+      url: `https://ecoparadigm.in/resources/blogs/${slug}`,
+      type: "article",
+      publishedTime: blog.date,
+      authors: ["Ecoparadigm"],
+    },
+    twitter: {
+      title: blog.title,
+      description,
+    },
+  };
+}
+
+export async function generateStaticParams() {
+  return blogs.map((b) => ({ slug: b.slug }));
+}
+
 export default async function BlogPage({
   params,
 }: {
@@ -260,9 +310,44 @@ export default async function BlogPage({
   const blog = blogs.find((b) => b.slug === slug);
   if (!blog) return notFound();
 
+  const firstParagraph = blog.content.find((b) => b.type === "paragraph") as
+    | { type: "paragraph"; text: string }
+    | undefined;
+
   return (
     <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-12">
-      <div className="max-w-3xl mx-auto">
+      {/* JSON-LD: BlogPosting */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: blog.title,
+            datePublished: blog.date,
+            author: {
+              "@type": "Organization",
+              name: "Ecoparadigm",
+              url: "https://ecoparadigm.in",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Ecoparadigm",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://ecoparadigm.in/logo.png",
+              },
+            },
+            description: firstParagraph?.text ?? blog.title,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://ecoparadigm.in/resources/blogs/${blog.slug}`,
+            },
+          }),
+        }}
+      />
+
+      <div className="max-w-4xl mx-auto">
         {/* IMAGE */}
         <div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] rounded-xl overflow-hidden mb-8">
           <Image src={blog.img} alt={blog.title} fill className="object-cover" />

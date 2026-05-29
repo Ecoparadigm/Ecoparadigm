@@ -237,23 +237,35 @@ export default function Testimonials() {
   });
 
   return (
-    <section className="relative py-14 sm:py-16 md:py-20 lg:py-24 overflow-hidden bg-[#062f2f] text-white">
+    <section className="relative py-20 md:py-32 overflow-hidden bg-gradient-to-b from-[#031c1c] to-[#062f2f] text-white">
       
       {/* 🔥 Subtle Background Glow */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-[-80px] left-[-80px] w-[300px] h-[300px] bg-green-500/10 blur-3xl rounded-full" />
-        <div className="absolute bottom-[-80px] right-[-80px] w-[300px] h-[300px] bg-emerald-400/10 blur-3xl rounded-full" />
+        <div className="absolute top-[-80px] left-[-80px] w-[300px] h-[300px] bg-green-500/10 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-80px] right-[-80px] w-[300px] h-[300px] bg-emerald-400/10 blur-[120px] rounded-full pointer-events-none" />
       </div>
 
       {/* 🔥 Heading */}
-      <div className="text-center mb-10 sm:mb-12 md:mb-14 px-4">
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="text-center mb-16 md:mb-20 px-4"
+      >
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+          <span className="text-xs sm:text-sm font-extrabold tracking-wider text-green-400 uppercase">
+            Testimonials
+          </span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">
           What our <span className="text-green-400">clients say</span>
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">
+        <p className="text-base sm:text-lg md:text-xl text-gray-400 mt-4 font-medium max-w-2xl mx-auto">
           Trusted by reputed companies and changemakers globally
         </p>
-      </div>
+      </motion.div>
 
       {/* 🔥 Carousel */}
       <div
@@ -263,8 +275,8 @@ export default function Testimonials() {
         onMouseLeave={() => setIsHovered(false)}
       >
         {/* Fade edges */}
-        <div className="absolute left-0 top-0 h-full w-8 sm:w-12 md:w-20 bg-gradient-to-r from-[#062f2f] to-transparent z-10" />
-        <div className="absolute right-0 top-0 h-full w-8 sm:w-12 md:w-20 bg-gradient-to-l from-[#062f2f] to-transparent z-10" />
+        <div className="absolute left-0 top-0 h-full w-8 sm:w-16 md:w-32 bg-gradient-to-r from-[#031c1c] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 h-full w-8 sm:w-16 md:w-32 bg-gradient-to-l from-[#062f2f] to-transparent z-10 pointer-events-none" />
 
         <motion.div
           className="flex gap-4 sm:gap-6 md:gap-8 px-4"
@@ -275,41 +287,41 @@ export default function Testimonials() {
           {[...testimonials, ...testimonials].map((item, index) => (
             <div
               key={index}
-              className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] max-w-[260px] sm:max-w-[300px] md:max-w-[340px] bg-white/5 backdrop-blur-md border border-white/10 p-4 sm:p-5 shadow-lg"
+              className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] max-w-[260px] sm:max-w-[300px] md:max-w-[340px] bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-2xl hover:bg-white/10 transition-colors duration-300"
               style={{
-                borderRadius: "20px",
+                borderRadius: "24px",
                 clipPath: `
                   path('
-                    M20 0 H300 Q320 0 320 20 V90
-                    Q320 110 340 110 Q360 110 360 130
-                    Q360 150 340 150 Q320 150 320 170
-                    V220 Q320 240 300 240 H20
-                    Q0 240 0 220 V20 Q0 0 20 0 Z
+                    M24 0 H300 Q324 0 324 24 V90
+                    Q324 110 344 110 Q364 110 364 130
+                    Q364 150 344 150 Q324 150 324 170
+                    V220 Q324 244 300 244 H24
+                    Q0 244 0 220 V24 Q0 0 24 0 Z
                   ')
                 `,
               }}
             >
               {/* Header */}
-              <div className="flex items-center gap-3 mb-3 sm:mb-4">
+              <div className="flex items-center gap-4 mb-5">
                 <Image
                   src={item.image}
                   alt={item.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full object-cover"
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover border-2 border-white/10"
                 />
                 <div>
-                  <h4 className="font-semibold text-sm sm:text-base md:text-lg text-white">
+                  <h4 className="font-bold text-base sm:text-lg text-white">
                     {item.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-400">
+                  <p className="text-xs sm:text-sm text-green-400 font-medium">
                     {item.role}
                   </p>
                 </div>
               </div>
 
               {/* Text */}
-              <p className="text-xs sm:text-sm md:text-base text-gray-300 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
                 {item.text}
               </p>
             </div>

@@ -1,6 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] } }
+};
 
 const features = [
   {
@@ -57,64 +63,97 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32">
-      {/* 🔥 Heading */}
-      <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-center text-blue-600 mb-10 sm:mb-16 md:mb-20 leading-tight">
-        Tailored Solutions to revolutionise the way you harvest rain
-      </h1>
+    <section className="py-20 md:py-32 bg-white px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 overflow-hidden relative">
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      <div className="absolute top-40 left-0 w-[400px] h-[400px] bg-green-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-6xl lg:max-w-7xl mx-auto space-y-12 sm:space-y-16 md:space-y-20 px-4 sm:px-6 md:px-12">
+      {/* 🔥 Heading */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: true, margin: "-50px" }}
+        className="max-w-4xl mx-auto text-center mb-16 md:mb-24"
+      >
+        <div className="flex items-center justify-center gap-2 mb-4">
+          <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+          <span className="text-xs sm:text-sm font-extrabold tracking-wider text-green-700 uppercase">
+            Why Choose Us
+          </span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 leading-tight tracking-tight">
+          Tailored Solutions to{" "}
+          <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+            revolutionise the way you harvest rain
+          </span>
+        </h2>
+      </motion.div>
+
+      <div className="max-w-7xl mx-auto space-y-24 sm:space-y-32">
         {features.map((item, index) => {
           const isReverse = index % 2 !== 0;
 
           return (
-            <div
+            <motion.div
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{ show: { transition: { staggerChildren: 0.15 } } }}
               key={index}
-              className={`flex flex-col md:flex-row items-center gap-8 sm:gap-10 md:gap-12 ${
-                isReverse ? "md:flex-row-reverse" : ""
+              className={`flex flex-col lg:flex-row items-center gap-10 md:gap-16 ${
+                isReverse ? "lg:flex-row-reverse" : ""
               }`}
             >
               {/* 🔹 TEXT */}
-              <div className="flex-1">
-                <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-black leading-snug">
+              <motion.div variants={fadeUp} className="flex-1 max-w-2xl">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-snug tracking-tight mb-4">
                   {item.title}
-                </h2>
+                </h3>
 
                 {item.description && (
-                  <p className="mt-3 sm:mt-4 text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                  <p className="text-base md:text-lg text-gray-600 leading-relaxed font-medium mb-6">
                     {item.description}
                   </p>
                 )}
 
                 {/* Points */}
                 {item.points && (
-                  <ul className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg space-y-1.5 sm:space-y-2 text-gray-700 list-disc list-inside">
+                  <ul className="space-y-3 mb-8">
                     {item.points.map((point, i) => (
-                      <li key={i}>{point}</li>
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-6 h-6 shrink-0 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-sm mt-0.5">
+                          ✓
+                        </span>
+                        <span className="text-base md:text-lg text-gray-700 font-medium">{point}</span>
+                      </li>
                     ))}
                   </ul>
                 )}
 
                 {/* Button */}
                 {item.button && (
-                  <button className="mt-5 sm:mt-6 w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-green-500 text-white text-sm sm:text-base md:text-lg rounded-lg hover:bg-green-600 transition">
+                  <button className="group relative bg-white border border-gray-200 text-gray-900 font-bold px-8 py-4 rounded-full hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-2">
                     {item.button}
+                    <span className="group-hover:translate-x-1 transition-transform text-green-600">→</span>
                   </button>
                 )}
-              </div>
+              </motion.div>
 
               {/* 🔹 IMAGE */}
-              <div className="flex-1 w-full">
-                <div className="relative w-full h-[200px] sm:h-[250px] md:h-[320px] lg:h-[400px] rounded-2xl overflow-hidden">
+              <motion.div variants={fadeUp} className="flex-1 w-full relative group">
+                <div className="absolute inset-0 bg-green-500/10 translate-x-4 translate-y-4 rounded-3xl -z-10 transition-transform group-hover:translate-x-6 group-hover:translate-y-6 duration-500"></div>
+                <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50 group-hover:shadow-green-500/10 transition-shadow duration-500">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover"
+                    className="object-cover transform group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           );
         })}
       </div>

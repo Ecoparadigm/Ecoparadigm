@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 
 const services = [
   {
@@ -16,60 +19,90 @@ const services = [
     desc: "Ensure compliance with accessibility standards and regulations while addressing elderly and differently-abled users—improve usability, safety, and inclusivity.",
   },
   {
-    title: "Carbon footprint audits (Scope 1, 2, and relevant Scope 3)",
+    title: "Carbon Footprint Audits",
     desc: "We offer end-to-end climate audits covering emissions, energy, and resource use to help organisations align with net-zero targets and regulatory frameworks.",
   },
   {
     title: "Biodiversity Assessment",
-    desc: "We evaluate the variety of life on your site to create a roadmap for protecting and restoring local ecosystems. This turns your project into a living asset that supports nature while increasing the overall health and value of the land.",
+    desc: "We evaluate the variety of life on your site to create a roadmap for protecting and restoring local ecosystems, supporting nature while increasing land value.",
   },
   {
-    title: "ESG",
-    desc: "Modern business is measured by more than profit. Our audits and designs give you the data and the infrastructure to boost your ESG score, helping you lower costs, attract talent, and secure investment.",
+    title: "ESG Advisory",
+    desc: "Our audits and designs give you the data and the infrastructure to boost your ESG score, helping you lower costs, attract talent, and secure investment.",
   },
 ];
 
 export default function WhatWeOffer() {
   return (
-    <section className="w-full py-14 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="w-full py-20 sm:py-24 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 bg-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-green-500/5 blur-[120px] rounded-full pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Heading */}
-        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900">
-          What we offer
-        </h2>
-        <p className="mt-3 text-gray-600 text-sm sm:text-base">
-          Comprehensive Net Zero solutions for business success.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-16 md:mb-20"
+        >
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-xs sm:text-sm font-extrabold tracking-wider text-green-700 uppercase">
+              What we offer
+            </span>
+          </div>
+          
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight">
+            Comprehensive <span className="text-green-500">Net Zero</span> Solutions
+          </h2>
+          <p className="mt-6 text-gray-600 text-base sm:text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+            Partner with us to achieve environmental compliance, optimize energy usage, and establish your organization as a sustainability leader.
+          </p>
+        </motion.div>
 
         {/* Grid */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-16">
           {services.map((item, index) => (
-            <div
+            <motion.div
               key={index}
-              className="bg-[#f5f5f5] rounded-2xl p-6 text-left shadow-sm hover:shadow-md transition"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="bg-white rounded-3xl p-8 text-left shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 group"
             >
-              {/* Icon placeholder */}
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 mb-4">
-                <span className="text-gray-600 text-lg">★</span>
+              <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-green-50 text-green-600 mb-6 group-hover:bg-green-500 group-hover:text-white transition-colors duration-300">
+                <CheckCircle2 className="w-7 h-7" />
               </div>
 
-              <h3 className="text-lg font-semibold text-gray-900">
+              <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">
                 {item.title}
               </h3>
 
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed font-medium">
                 {item.desc}
               </p>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Button */}
-        <div className="mt-10">
-          <button className="bg-green-500 hover:bg-green-600 text-white text-sm sm:text-base px-6 py-3 rounded-md transition">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="flex justify-center"
+        >
+          <Link
+            href="/contact"
+            className="group bg-green-500 hover:bg-green-600 text-white font-bold text-sm sm:text-base px-8 py-4 rounded-xl transition-all duration-300 shadow-lg shadow-green-500/20 hover:shadow-green-500/40 hover:-translate-y-0.5 flex items-center gap-2"
+          >
             Get a Site Assessment
-          </button>
-        </div>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

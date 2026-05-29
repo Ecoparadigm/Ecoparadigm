@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -48,11 +48,11 @@ const items = [
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.1, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] },
   },
 };
 
@@ -60,7 +60,7 @@ const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -69,110 +69,165 @@ const InfrastructureSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = items[activeIndex];
 
+  const handleConsultationClick = () => {
+    const contactSec = document.getElementById("contact-section");
+    if (contactSec) {
+      contactSec.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className="w-full py-14 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28">
-      <div className="max-w-7xl">
-        <p className="text-xs sm:text-sm text-gray-600 flex items-center gap-2 mb-2 sm:mb-3">
-          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-          Adaptable Infrastructure
-        </p>
+    <section className="w-full py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 bg-gradient-to-b from-[#031c1c] to-[#062f2f] relative overflow-hidden border-t border-white/5">
+      <div className="absolute inset-0 bg-radial-[at_top_right] from-[#0f4d4d]/15 via-transparent pointer-events-none" />
 
-        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-3 sm:mb-4">
-          Underground. Out of sight. <br />
-          <span className="text-green-500">Fit and Forget about it.</span>
-        </h2>
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-sm font-bold tracking-wider text-green-400 uppercase">
+              Adaptable Infrastructure
+            </span>
+          </div>
 
-        <p className="text-gray-600 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 max-w-lg">
-          NaturalSTP is an innovative, biophilic, non-electric wastewater
-          treatment system that removes the complexity and recurring headaches
-          of conventional STPs.
-        </p>
-      </div>
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
-        {/* LEFT */}
-        <div>
-          {/* ACCORDION */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <motion.div className="space-y-3 sm:space-y-4" variants={fadeUp}>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4 text-white tracking-tight">
+            Underground. Out of sight. <br />
+            <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
+              Fit and Forget.
+            </span>
+          </h2>
+
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg mb-8 max-w-xl leading-relaxed">
+            NaturalSTP™ is an innovative, biophilic, non-electric wastewater
+            treatment system that removes the complexity and recurring headaches
+            of conventional mechanical STPs.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+          {/* LEFT: ACCORDIONS */}
+          <div className="lg:col-span-7">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
               {items.map((item, index) => {
                 const isActive = activeIndex === index;
 
                 return (
-                  <div
+                  <motion.div
                     key={index}
+                    variants={fadeUp}
                     onClick={() => setActiveIndex(index)}
-                    className={`cursor-pointer rounded-xl p-4 sm:p-5 transition ${
-                      isActive ? "bg-[#c9d8df]" : "bg-[#d9e5ea]"
+                    className={`cursor-pointer rounded-2xl p-5 border transition-all duration-300 ${
+                      isActive
+                        ? "bg-white/10 border-white/15 shadow-[0_0_30px_rgba(34,197,94,0.08)] scale-[1.01]"
+                        : "bg-white/5 border-white/5 opacity-70 hover:opacity-100 hover:bg-white/8 hover:border-white/10"
                     }`}
                   >
-                    <div className="flex items-center gap-2 sm:gap-3">
-                      <div
-                        className={`w-[2px] h-5 sm:h-6 ${
-                          isActive ? "bg-green-500" : "bg-black"
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`w-1 h-6 rounded-full transition-all duration-300 ${
+                            isActive
+                              ? "bg-gradient-to-b from-green-400 to-emerald-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"
+                              : "bg-gray-600"
+                          }`}
+                        />
+                        <h3 className="font-semibold text-white text-base sm:text-lg">
+                          {item.title}
+                        </h3>
+                      </div>
+                      <span
+                        className={`text-xs transition-transform duration-300 ${
+                          isActive ? "rotate-180 text-green-400" : "text-gray-400"
                         }`}
-                      ></div>
-
-                      <h3 className="font-medium text-gray-900 text-sm sm:text-base md:text-lg">
-                        {item.title}
-                      </h3>
+                      >
+                        ▼
+                      </span>
                     </div>
 
-                    {isActive && (
-                      <p className="text-gray-600 mt-2 sm:mt-3 text-xs sm:text-sm md:text-base leading-relaxed pl-4 sm:pl-5">
-                        {item.content}
-                      </p>
-                    )}
-                  </div>
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.25, 1, 0.5, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-gray-300 mt-4 text-sm sm:text-base leading-relaxed pl-5 border-l border-white/5">
+                            {item.content}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 );
               })}
+
+              <motion.button
+                variants={fadeUp}
+                onClick={handleConsultationClick}
+                className="group mt-8 w-full sm:w-auto bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold px-8 py-3.5 rounded-full shadow-[0_4px_20px_rgba(34,197,94,0.25)] hover:shadow-[0_4px_25px_rgba(34,197,94,0.4)] transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+              >
+                Request a Technical Consultation
+                <span className="group-hover:translate-x-0.5 transition duration-300">→</span>
+              </motion.button>
             </motion.div>
-
-            {/* BUTTON */}
-            <motion.button
-              variants={fadeUp}
-              className="mt-6 sm:mt-8 md:mt-10 w-full sm:w-auto bg-green-500 hover:bg-green-600 transition text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium"
-            >
-              Request a Technical Consultation
-            </motion.button>
-          </motion.div>
-        </div>
-
-        {/* RIGHT */}
-        <motion.div
-          className="flex items-center justify-center mt-8 md:mt-0"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="bg-white rounded-2xl border border-gray-200 p-3 sm:p-4 shadow-sm w-full max-w-md">
-            <Image
-              key={activeIndex}
-              src={activeItem.image}
-              alt="Infrastructure"
-              width={300}
-              height={500}
-              className="rounded-lg object-cover w-full h-[220px] sm:h-[280px] md:h-[320px]"
-            />
-
-            <div className="mt-3 sm:mt-4 flex items-start gap-2">
-              <span className="w-2 h-2 bg-yellow-400 rounded-full mt-2"></span>
-              <div>
-                <h4 className="text-blue-600 text-sm sm:text-base font-medium">
-                  {activeItem.rightTitle}
-                </h4>
-                <p className="text-xs sm:text-sm text-gray-600">
-                  {activeItem.rightDesc}
-                </p>
-              </div>
-            </div>
           </div>
-        </motion.div>
+
+          {/* RIGHT: PHOTO DISPLAY */}
+          <div className="lg:col-span-5 flex items-center justify-center">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="w-full max-w-md"
+            >
+              <div className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl relative overflow-hidden group">
+                {/* Glow ring behind image */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-green-500/10 to-cyan-500/10 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+                
+                <div className="relative h-[250px] sm:h-[300px] md:h-[350px] rounded-xl overflow-hidden mb-4">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeIndex}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={activeItem.image}
+                        alt={activeItem.rightTitle}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+
+                <div className="flex items-start gap-3 relative z-10 px-1 py-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2 animate-pulse shrink-0" />
+                  <div>
+                    <h4 className="text-green-400 text-sm sm:text-base font-bold">
+                      {activeItem.rightTitle}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-gray-300 mt-1 leading-relaxed">
+                      {activeItem.rightDesc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

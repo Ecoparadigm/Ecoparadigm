@@ -29,13 +29,13 @@ export const metadata: Metadata = {
   authors: [{ name: "EcoParadigm" }],
   creator: "EcoParadigm",
 
-  metadataBase: new URL("https://ecoparadigm.com"),
+  metadataBase: new URL("https://ecoparadigm.in"),
 
   openGraph: {
     title: "About EcoParadigm | 20+ Years of Environmental Impact",
     description:
       "Delivering measurable environmental and economic value across India and beyond. 600+ projects, 200M+ lives impacted, and billions of litres of water treated.",
-    url: "https://ecoparadigm.com/about",
+    url: "https://ecoparadigm.in/about",
     siteName: "EcoParadigm",
     images: [
       {
@@ -74,8 +74,8 @@ export default function AboutPage() {
             "@context": "https://schema.org",
             "@type": "Organization",
             name: "EcoParadigm",
-            url: "https://ecoparadigm.com",
-            logo: "https://ecoparadigm.com/logo.png", // 👉 replace with your logo
+            url: "https://ecoparadigm.in",
+            logo: "https://ecoparadigm.in/logo.png", // 👉 replace with your logo
             description:
               "Award-winning environmental engineering company specializing in sustainable solutions.",
             foundingDate: "2000",

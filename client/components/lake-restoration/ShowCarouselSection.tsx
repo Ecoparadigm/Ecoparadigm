@@ -109,84 +109,89 @@ export default function ShowcaseCarouselSection() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-[#042f2e] to-[#021f1f] py-14 sm:py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full bg-gradient-to-b from-[#031c1c] to-[#062f2f] py-20 md:py-32 px-4 sm:px-6 md:px-12 lg:px-20 xl:px-28 text-white overflow-hidden">
+      {/* Subtle Background Glow */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-0 right-[-10%] w-[500px] h-[500px] bg-green-500/10 blur-[150px] rounded-full" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* HEADER */}
-        <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-4">
-            <span className="text-green-400">Net Zero</span>{" "}
-            <span className="text-cyan-400">NaturalSTP</span> in Action
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="text-center mb-16 md:mb-20"
+        >
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-xs sm:text-sm font-extrabold tracking-wider text-green-400 uppercase">
+              Showcase
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">Net Zero</span>{" "}
+            NaturalSTP in Action
           </h2>
 
-          <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
             From large-scale manufacturers to boutique eco resorts, we help
             sectors meet environmental compliance.
           </p>
-        </div>
+        </motion.div>
 
         {/* CAROUSEL */}
-        <div className="relative">
+        <div className="relative group">
           <button
             onClick={prev}
-            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
+            disabled={index === 0}
+            className={`absolute left-0 md:-left-8 top-1/2 -translate-y-1/2 z-20 p-3 md:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-110 shadow-xl ${index === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-0 group-hover:opacity-100'}`}
           >
-            <ChevronLeft />
+            <ChevronLeft size={24} />
           </button>
 
           <button
             onClick={next}
-            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
+            disabled={index >= maxIndex}
+            className={`absolute right-0 md:-right-8 top-1/2 -translate-y-1/2 z-20 p-3 md:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-110 shadow-xl ${index >= maxIndex ? 'opacity-50 cursor-not-allowed' : 'opacity-0 group-hover:opacity-100'}`}
           >
-            <ChevronRight />
-          </button>
-          <div className=" overflow-hidden">
-            {/* BUTTONS */}
-            {/* <button
-            onClick={prev}
-            className="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
-          >
-            <ChevronLeft />
+            <ChevronRight size={24} />
           </button>
 
-          <button
-            onClick={next}
-            className="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur"
-          >
-            <ChevronRight />
-          </button> */}
-
+          <div className="overflow-hidden rounded-3xl mx-1 md:mx-4">
             {/* 🔥 TRACK */}
             <motion.div
-              className="flex gap-4 sm:gap-6"
+              className="flex gap-6"
               animate={{
-                x: `-${index * (100 / visibleCount)}%`,
+                x: `calc(-${index * (100 / visibleCount)}% - ${index * (24 / visibleCount)}px)`, // 24px is the gap
               }}
               transition={{
                 type: "spring",
-                stiffness: 80,
+                stiffness: 70,
                 damping: 20,
               }}
             >
               {cards.map((card, i) => (
                 <div
                   key={i}
-                  className="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] bg-[#063737] rounded-2xl overflow-hidden"
+                  className="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl overflow-hidden hover:bg-white/10 transition-colors duration-500"
                 >
                   {/* IMAGE */}
-                  <div className="relative h-[220px] sm:h-[280px] md:h-[320px]">
+                  <div className="relative h-[240px] sm:h-[300px] md:h-[340px] overflow-hidden">
                     <Image
                       src={card.image}
                       alt={card.title}
                       fill
-                      className="object-cover"
+                      className="object-cover hover:scale-105 transition-transform duration-700"
                     />
 
-                    <div className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#062f2f] via-transparent to-transparent flex flex-col justify-end p-5">
                       <div className="flex gap-2 flex-wrap">
-                        <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                        <span className="text-xs font-bold bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
                           {card.badge1}
                         </span>
-                        <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                        <span className="text-xs font-bold bg-white/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
                           {card.badge2}
                         </span>
                       </div>
@@ -194,9 +199,9 @@ export default function ShowcaseCarouselSection() {
                   </div>
 
                   {/* TEXT */}
-                  <div className="p-4 sm:p-5">
-                    <h3 className="font-semibold text-lg mb-2">{card.title}</h3>
-                    <p className="text-sm text-gray-300">{card.desc}</p>
+                  <div className="p-6 md:p-8">
+                    <h3 className="font-bold text-xl md:text-2xl mb-3 leading-tight">{card.title}</h3>
+                    <p className="text-sm md:text-base text-gray-300 font-medium leading-relaxed">{card.desc}</p>
                   </div>
                 </div>
               ))}
@@ -205,28 +210,34 @@ export default function ShowcaseCarouselSection() {
         </div>
 
         {/* STATS */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 text-center">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-24 text-center border-t border-white/10 pt-16"
+        >
           <div>
-            <h3 className="text-3xl font-bold">
+            <h3 className="text-5xl md:text-6xl font-black mb-2 text-white">
               <Counter value={80} />
             </h3>
-            <p className="text-gray-400 text-sm">Billion Litres Treated</p>
+            <p className="text-green-400 font-bold tracking-wider uppercase text-sm">Billion Litres Treated</p>
           </div>
 
           <div>
-            <h3 className="text-4xl font-bold">
+            <h3 className="text-5xl md:text-6xl font-black mb-2 text-white">
               <Counter value={600} />+
             </h3>
-            <p className="text-gray-400 text-sm">Projects Executed</p>
+            <p className="text-green-400 font-bold tracking-wider uppercase text-sm">Projects Executed</p>
           </div>
 
           <div>
-            <h3 className="text-3xl font-bold">
+            <h3 className="text-5xl md:text-6xl font-black mb-2 text-white">
               <Counter value={20} />
             </h3>
-            <p className="text-gray-400 text-sm">Years Experience</p>
+            <p className="text-green-400 font-bold tracking-wider uppercase text-sm">Years Experience</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
