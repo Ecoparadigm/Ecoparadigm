@@ -37,10 +37,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogsPage() {
+import { supabase } from "@/utils/supabase";
+
+export default async function BlogsPage() {
+  const { data: blogs } = await supabase
+    .from("blogs")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  // Map database properties to what the KnowledgeCenter expects
+  const formattedBlogs = (blogs || []).map(b => ({
+    id: b.id,
+    slug: b.slug,
+    title: b.title,
+    date: b.date,
+    category: b.category,
+    img: b.image_url || "https://images.unsplash.com/photo-1573164713988-8665fc963095"
+  }));
+
   return (
     <>
-      <KnowledgeCenter />
+      <KnowledgeCenter initialBlogs={formattedBlogs} />
       <CTASection />
     </>
   );

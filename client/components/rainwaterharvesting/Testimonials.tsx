@@ -176,34 +176,30 @@ import { motion, useMotionValue, useAnimationFrame } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 
-const testimonials = [
-  {
-    name: "Arvind Keerthy",
-    role: "Urban Environmentalist",
-    text: `"When we took up the challenge of rejuvenating Kundalahalli Lake, we needed a nearly unbreakable treatment system..."`,
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
-  },
-  {
-    name: "Manish Michael",
-    role: "CEO, United Way Bengaluru",
-    text: `"The technical competencies provided for all our initiatives by Ecoparadigm was above board..."`,
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    name: "Raj Bhagat",
-    role: "Holycross Hospital",
-    text: `"We are happy with the service provided for the Holy Cross Hospital STP Tank..."`,
-    image: "https://randomuser.me/api/portraits/men/6.jpg",
-  },
-  {
-    name: "Prashant Palanisamy",
-    role: "General Manager, Good Earth",
-    text: `"We have been using NaturalSTP in all our properties since 10+ years."`,
-    image: "https://randomuser.me/api/portraits/men/1.jpg",
-  },
-];
+import { supabase } from "@/utils/supabase";
+
+type Testimonial = {
+  id: string;
+  name: string;
+  company: string;
+  testimonial: string;
+  image_url?: string;
+};
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const { data } = await supabase.from("testimonials").select("*").order("created_at", { ascending: false });
+      if (data) {
+        setTestimonials(data);
+      }
+      setLoading(false);
+    };
+    fetchTestimonials();
+  }, []);
   const [isHovered, setIsHovered] = useState(false);
   const x = useMotionValue(0);
 
@@ -284,48 +280,52 @@ export default function Testimonials() {
           drag="x"
           dragElastic={0.1}
         >
-          {[...testimonials, ...testimonials].map((item, index) => (
-            <div
-              key={index}
-              className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] max-w-[260px] sm:max-w-[300px] md:max-w-[340px] bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-2xl hover:bg-white/10 transition-colors duration-300"
-              style={{
-                borderRadius: "24px",
-                clipPath: `
-                  path('
-                    M24 0 H300 Q324 0 324 24 V90
-                    Q324 110 344 110 Q364 110 364 130
-                    Q364 150 344 150 Q324 150 324 170
-                    V220 Q324 244 300 244 H24
-                    Q0 244 0 220 V24 Q0 0 24 0 Z
-                  ')
-                `,
-              }}
-            >
-              {/* Header */}
-              <div className="flex items-center gap-4 mb-5">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover border-2 border-white/10"
-                />
-                <div>
-                  <h4 className="font-bold text-base sm:text-lg text-white">
-                    {item.name}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-green-400 font-medium">
-                    {item.role}
-                  </p>
+          {loading ? (
+            <div className="flex justify-center w-full">Loading...</div>
+          ) : (
+            [...(testimonials.length > 0 ? testimonials : []), ...(testimonials.length > 0 ? testimonials : [])].map((item, index) => (
+              <div
+                key={index}
+                className="min-w-[240px] sm:min-w-[280px] md:min-w-[320px] max-w-[260px] sm:max-w-[300px] md:max-w-[340px] bg-white/5 backdrop-blur-xl border border-white/10 p-6 shadow-2xl hover:bg-white/10 transition-colors duration-300 flex flex-col"
+                style={{
+                  borderRadius: "24px",
+                  clipPath: `
+                    path('
+                      M24 0 H300 Q324 0 324 24 V90
+                      Q324 110 344 110 Q364 110 364 130
+                      Q364 150 344 150 Q324 150 324 170
+                      V220 Q324 244 300 244 H24
+                      Q0 244 0 220 V24 Q0 0 24 0 Z
+                    ')
+                  `,
+                }}
+              >
+                {/* Header */}
+                <div className="flex items-center gap-4 mb-5">
+                  <img
+                    src={item.image_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=16a34a&color=fff`}
+                    alt={item.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full object-cover border-2 border-white/10"
+                  />
+                  <div>
+                    <h4 className="font-bold text-base sm:text-lg text-white">
+                      {item.name}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-green-400 font-medium line-clamp-1">
+                      {item.company}
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              {/* Text */}
-              <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
-                {item.text}
-              </p>
-            </div>
-          ))}
+                {/* Text */}
+                <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
+                  "{item.testimonial}"
+                </p>
+              </div>
+            ))
+          )}
         </motion.div>
       </div>
     </section>

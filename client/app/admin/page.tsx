@@ -85,32 +85,52 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col h-screen overflow-hidden">
+      <main className="flex-1 flex flex-col h-screen overflow-hidden bg-gray-50">
         {/* Mobile Header */}
-        <header className="md:hidden bg-white border-b border-gray-200 p-4 flex justify-between items-center z-10">
+        <header className="md:hidden bg-white border-b border-gray-200 p-4 flex justify-between items-center z-10 sticky top-0">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-6 h-6 text-green-600" />
-            <h1 className="font-bold text-gray-900">Admin</h1>
+            <h1 className="font-bold text-gray-900">EcoAdmin</h1>
           </div>
-          <button onClick={handleLogout} className="p-2 text-gray-500 hover:text-red-600">
+          <button onClick={handleLogout} className="p-2 text-gray-500 hover:text-red-600 transition-colors">
             <LogOut className="w-5 h-5" />
           </button>
         </header>
 
         {/* Dynamic Content Area */}
-        <div className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8 w-full max-w-7xl mx-auto">
+        <div className="flex-1 overflow-auto p-4 sm:p-6 lg:p-8 w-full max-w-7xl mx-auto mb-16 md:mb-0">
           <motion.div
             key={activeTab}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="h-full"
+            className="h-full pb-8"
           >
             {activeTab === "blogs" && <AdminBlogs />}
             {activeTab === "projects" && <AdminProjects />}
             {activeTab === "clients" && <AdminClients />}
           </motion.div>
         </div>
+
+        {/* Mobile Bottom Navigation */}
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 flex justify-around p-2 pb-safe">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`flex flex-col items-center gap-1 p-2 flex-1 rounded-lg transition-colors ${
+                  isActive ? "text-green-600" : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
+                }`}
+              >
+                <Icon className={`w-5 h-5 ${isActive ? "text-green-600" : "text-gray-500"}`} />
+                <span className="text-[10px] font-medium">{item.label}</span>
+              </button>
+            );
+          })}
+        </nav>
       </main>
     </div>
   );

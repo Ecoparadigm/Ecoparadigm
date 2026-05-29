@@ -6,62 +6,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
 
-const blogs = [
-  {
-    slug: "natural-water-treatment",
-    title: "20 Years of Leadership in Biomimicry-Based Natural Water Treatment",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095",
-  },
-  {
-    slug: "naturalstp-savings",
-    title: "How NaturalSTPs Save Crores in Apartment Projects",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-  },
-  {
-    slug: "what-is-naturalstp",
-    title: "What Is NaturalSTP and How Does It Work?",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-  },
-  {
-    slug: "wastewater-explained",
-    title: "Sustainable Wastewater Treatment Explained",
-    date: "Oct 10, 2024",
-    img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-  },
-  {
-    slug: "rainwater-harvesting",
-    title: "Rainwater Harvesting for Smart Cities",
-    date: "Oct 09, 2024",
-    img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29",
-  },
-  {
-    slug: "zld-guide",
-    title: "Zero Liquid Discharge Systems Guide",
-    date: "Oct 08, 2024",
-    img: "https://images.unsplash.com/photo-1497436072909-f5e4be4f6b13",
-  },
-  {
-    slug: "green-infrastructure",
-    title: "Green Infrastructure for Urban Areas",
-    date: "Oct 07, 2024",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-  },
-  {
-    slug: "climate-water",
-    title: "Climate Change & Water Management",
-    date: "Oct 06, 2024",
-    img: "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
-  },
-  {
-    slug: "future-engineering",
-    title: "Future of Environmental Engineering",
-    date: "Oct 05, 2024",
-    img: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d",
-  },
-];
+type Blog = {
+  id?: string;
+  slug: string;
+  title: string;
+  date: string;
+  category?: string;
+  img?: string;
+};
 
 const staggerContainer = {
   hidden: {},
@@ -75,10 +27,10 @@ const itemStagger = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 1, 0.5, 1] } },
 };
 
-export default function KnowledgeCenter() {
+export default function KnowledgeCenter({ initialBlogs }: { initialBlogs: Blog[] }) {
   const [search, setSearch] = useState("");
 
-  const filteredBlogs = blogs.filter((blog) =>
+  const filteredBlogs = initialBlogs.filter((blog) =>
     blog.title.toLowerCase().includes(search.toLowerCase()),
   );
 

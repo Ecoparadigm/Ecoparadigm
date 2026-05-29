@@ -34,7 +34,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ProjectsPage() {
+import { supabase } from "@/utils/supabase";
+
+export default async function ProjectsPage() {
+  const { data: projects, error } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: true });
+
+  const safeProjects = projects || [];
+
   return (
     <div className="bg-white min-h-screen">
       <section className="px-4 sm:px-6 md:px-12 lg:px-20 xl:px-24 2xl:px-32 py-16 sm:py-20 md:py-28 max-w-[1600px] mx-auto">
@@ -66,74 +75,24 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        {/* 🔥 IMAGE CARDS SECTION */}
+        {/* 🔥 DYNAMIC IMAGE CARDS SECTION */}
         <div className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8">
-          {/* ROW 1 → 4:2 */}
           <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
-            <ProjectCard
-              title="Waste Water Treatment"
-              desc="Sustainable and efficient treatment solutions"
-              img="https://plus.unsplash.com/premium_photo-1682144318933-fcab743fb527?q=80&w=871&auto=format&fit=crop"
-              span="md:col-span-4"
-            />
-
-            <ProjectCard
-              title="Lake Restoration"
-              desc="Bringing ecosystems back to life"
-              img="https://plus.unsplash.com/premium_photo-1661825536186-19606cd9a0f1?q=80&w=419&auto=format&fit=crop"
-              span="md:col-span-2"
-            />
-          </div>
-
-          {/* ROW 2 → 2:4 */}
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
-            <ProjectCard
-              title="Energy Systems"
-              desc="Innovative energy solutions"
-              img="https://plus.unsplash.com/premium_photo-1661962514374-442d58a10c91?q=80&w=846&auto=format&fit=crop"
-              span="md:col-span-2"
-            />
-
-            <ProjectCard
-              title="Solid Waste Management"
-              desc="Efficient waste handling"
-              img="https://i.ytimg.com/vi/LWq-aLhbil4/maxresdefault.jpg"
-              span="md:col-span-4"
-            />
-          </div>
-
-          {/* ROW 3 → 4:2 */}
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
-            <ProjectCard
-              title="Climate Solutions"
-              desc="Driving sustainability"
-              img="https://images.unsplash.com/photo-1690730685007-c253cb2a5f44?q=80&w=774&auto=format&fit=crop"
-              span="md:col-span-4"
-            />
-
-            <ProjectCard
-              title="Water Recycling"
-              desc="Reuse and sustainability"
-              img="https://images.unsplash.com/photo-1608441877519-7aa279de3e7d?q=80&w=387&auto=format&fit=crop"
-              span="md:col-span-2"
-            />
-          </div>
-
-          {/* ROW 4 → 2:4 */}
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 sm:gap-8">
-            <ProjectCard
-              title="Urban Water"
-              desc="Smart city water systems"
-              img="https://plus.unsplash.com/premium_photo-1679862571153-04959fa9411d?q=80&w=869&auto=format&fit=crop"
-              span="md:col-span-2"
-            />
-
-            <ProjectCard
-              title="Green Energy"
-              desc="Future-ready solutions"
-              img="https://i.ytimg.com/vi/LWq-aLhbil4/maxresdefault.jpg"
-              span="md:col-span-4"
-            />
+            {safeProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                desc={project.description}
+                img={project.image_url}
+                span={project.layout_span || "md:col-span-3"}
+              />
+            ))}
+            
+            {safeProjects.length === 0 && (
+              <div className="col-span-1 md:col-span-6 text-center py-20 text-gray-500">
+                No projects found. Check back later!
+              </div>
+            )}
           </div>
         </div>
 
