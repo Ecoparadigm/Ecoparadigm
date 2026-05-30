@@ -62,11 +62,11 @@ export default function HomeHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] mb-6 tracking-tighter"
           >
-            We solve your{" "}
+            Zero OPEX STP's & <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
-              environmental challenges
+              Environmental Infrastructure
             </span>
           </motion.h1>
 
@@ -77,9 +77,7 @@ export default function HomeHero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-gray-300 text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-lg leading-relaxed font-medium"
           >
-            Delivering innovative and biomimicry-based sustainable solutions across wastewater,
-            solid waste, and environmental engineering — built for long-term
-            ecological impact.
+            Award-winning experts in Net-Zero Natural STP, wastewater treatment, and sustainable infrastructure solutions across India.
           </motion.p>
 
           {/* Buttons */}

@@ -89,45 +89,54 @@ export default function ServicesGrid() {
               <motion.div
                 variants={cardVariant}
                 whileHover={{ y: -8 }}
-                className={`relative rounded-2xl overflow-hidden border border-gray-100 shadow-lg shadow-gray-200/50 ${
+                className={`relative rounded-3xl overflow-hidden p-8 flex flex-col justify-between transition-all duration-300 shadow-xl ${
+                  index % 2 === 0
+                    ? "bg-gradient-to-br from-[#062f2f] to-[#031c1c] text-white border border-white/10"
+                    : "bg-white text-gray-900 border border-gray-100"
+                } ${
                   card.large
-                    ? "md:col-span-2 h-[260px] md:h-[320px]"
-                    : "h-[220px] md:h-[320px]"
+                    ? "md:col-span-2 min-h-[300px]"
+                    : "min-h-[300px]"
                 }`}
               >
-                {/* Image with subtle zoom */}
-                <motion.div
-                  className="absolute inset-0"
-                  whileHover={{ scale: 1.06 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <Image
-                    src={card.img}
-                    alt={card.title}
-                    fill
-                    className="object-cover group-hover:opacity-90 transition-opacity"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#031c1c]/95 via-[#031c1c]/60 to-transparent" />
-                </motion.div>
-
                 {/* Content Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6 flex flex-col justify-end h-full z-10 pointer-events-none">
-                  <h3 className="text-lg sm:text-xl font-bold text-white leading-tight group-hover:text-green-300 transition duration-300">
+                <div className="z-10 relative">
+                  <h3 className={`text-2xl sm:text-3xl font-black leading-tight mb-4 transition duration-300 ${
+                    index % 2 === 0 ? "text-white" : "text-gray-900"
+                  }`}>
                     {card.title}
                   </h3>
 
                   {card.desc && (
-                    <p className="text-xs sm:text-sm text-gray-300 mt-2 leading-relaxed opacity-90">
+                    <p className={`text-sm sm:text-base leading-relaxed ${
+                      index % 2 === 0 ? "text-gray-300" : "text-gray-600"
+                    }`}>
                       {card.desc}
                     </p>
                   )}
                 </div>
 
-                {/* Arrow */}
-                <div className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center border border-white/20 rounded-full text-white bg-white/5 backdrop-blur-md transition-all duration-300 group-hover:bg-green-500 group-hover:border-green-500 group-hover:scale-110 z-20">
-                  <span className="text-base font-bold transition duration-300 group-hover:translate-x-0.5">
-                    →
-                  </span>
+                {/* Arrow & Image Hint */}
+                <div className="flex justify-between items-end mt-8 relative z-10">
+                  <div className={`w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 ${
+                    index % 2 === 0
+                      ? "bg-green-500 text-white shadow-lg shadow-green-500/30 group-hover:bg-green-400"
+                      : "bg-gray-100 text-green-700 group-hover:bg-green-100 group-hover:text-green-800"
+                  }`}>
+                    <span className="text-xl font-bold transition duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </div>
+                  
+                  {/* Subtle Image Hint */}
+                  <div className="w-24 h-24 rounded-2xl overflow-hidden relative opacity-80 group-hover:opacity-100 transition-opacity">
+                     <Image
+                      src={card.img}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </motion.div>
             </Link>

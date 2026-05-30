@@ -1,15 +1,25 @@
 import { Metadata } from "next";
 import HeroSection from "@/components/homepage/HeroSection";
-import HeroSection2 from "@/components/projects/HeroSection";
-import SupportersGrid from "@/components/homepage/SupportersGrid";
-import Testimonials from "@/components/rainwaterharvesting/Testimonials";
-import AboutStats from "@/components/homepage/AboutStats";
+import ComplianceHero from "@/components/homepage/ComplianceHero";
+import AwardsBanner from "@/components/homepage/AwardsBanner";
+import NaturalSTPIntro from "@/components/homepage/NaturalSTPIntro";
+import DetailedServices from "@/components/homepage/DetailedServices";
+import FeaturesSection from "@/components/homepage/FeaturesSection";
+import WhoWeServe from "@/components/homepage/WhoWeServe";
+import WhyChooseUs from "@/components/homepage/WhyChooseUs";
+import WhyNaturalSTP from "@/components/homepage/WhyNaturalSTP";
+import MediaMentions from "@/components/homepage/MediaMentions";
 import ServicesGrid from "@/components/homepage/ServicesGrid";
+import AboutStats from "@/components/homepage/AboutStats";
+import Testimonials from "@/components/rainwaterharvesting/Testimonials";
+import ESGDeepDive from "@/components/homepage/ESGDeepDive";
+import SupportersGrid from "@/components/homepage/SupportersGrid";
 import FAQSection from "@/components/Faq";
+import HeroSection2 from "@/components/projects/HeroSection";
 
 export const metadata: Metadata = {
   title:
-    "NaturalSTP™ | Zero-Electricity Wastewater Treatment & Environmental Solutions — Ecoparadigm",
+    "Zero OPEX STP's & Environmental Infrastructure | Ecoparadigm",
   description:
     "Ecoparadigm is India’s 6-time National Award-winning pioneer of NaturalSTP™ — a chemical-free, zero-electricity sewage treatment plant. Trusted by 600+ clients for wastewater treatment, lake restoration, rainwater harvesting, solid waste management and environmental audits.",
   keywords: [
@@ -31,7 +41,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "Ecoparadigm | NaturalSTP™ — India’s Award-Winning Eco-Friendly Water Solutions",
+      "Zero OPEX STP's & Environmental Infrastructure | Ecoparadigm",
     description:
       "6-time National Award-winning company. Pioneers of NaturalSTP™ — zero electricity, zero maintenance, chemical-free sewage treatment. 600+ projects, 200M+ lives impacted.",
     url: "https://ecoparadigm.in",
@@ -39,7 +49,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title:
-      "Ecoparadigm | NaturalSTP™ — India’s Award-Winning Eco-Friendly Water Solutions",
+      "Zero OPEX STP's & Environmental Infrastructure | Ecoparadigm",
     description:
       "6-time National Award-winning environmental engineering. Pioneers of NaturalSTP™ — zero electricity, zero maintenance, chemical-free STP.",
   },
@@ -47,7 +57,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen bg-gray-50">
       {/* JSON-LD: Organization */}
       <script
         type="application/ld+json"
@@ -95,13 +105,25 @@ export default function Page() {
           }),
         }}
       />
+      
+      {/* Layout Flow */}
       <HeroSection />
+      <ComplianceHero />
+      <AwardsBanner />
+      <NaturalSTPIntro />
+      <DetailedServices />
+      <FeaturesSection />
+      <WhoWeServe />
+      <WhyChooseUs />
+      <WhyNaturalSTP />
+      <MediaMentions />
       <ServicesGrid />
-      <Testimonials />
       <AboutStats />
+      <Testimonials />
+      <ESGDeepDive />
       <SupportersGrid />
       <FAQSection />
       <HeroSection2 />
-    </>
+    </div>
   );
 }
