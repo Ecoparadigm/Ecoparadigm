@@ -16,6 +16,7 @@ import ESGDeepDive from "@/components/homepage/ESGDeepDive";
 import SupportersGrid from "@/components/homepage/SupportersGrid";
 import FAQSection from "@/components/Faq";
 import HeroSection2 from "@/components/projects/HeroSection";
+import PopupLeadForm from "@/components/homepage/PopupLeadForm";
 
 export const metadata: Metadata = {
   title:
@@ -124,6 +125,7 @@ export default function Page() {
       <SupportersGrid />
       <FAQSection />
       <HeroSection2 />
+      <PopupLeadForm />
     </div>
   );
 }
