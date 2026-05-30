@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       
       mailOptions = {
         from: `"${name} (via Ecoparadigm Popup)" <${process.env.EMAIL_USER}>`,
-        to: "nikhil.4002.50.82@gmail.com",
+        to: process.env.EMAIL_USER,
         replyTo: isEmail ? contactInfo : process.env.EMAIL_USER,
         subject: `New Lead: Interested in ${service || "General"}`,
         text: `
@@ -70,7 +70,7 @@ Interested Service: ${service}
 
       mailOptions = {
         from: `"${name} (via Ecoparadigm)" <${process.env.EMAIL_USER}>`,
-        to: "nikhil.4002.50.82@gmail.com",
+        to: process.env.EMAIL_USER,
         replyTo: email,
         subject: `New Contact Request from ${name}`,
         text: `
