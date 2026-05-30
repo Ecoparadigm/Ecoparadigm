@@ -1,255 +1,11 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { supabase } from "@/utils/supabase";
+import Link from "next/link";
+import { ArrowLeft, Calendar, Tag, ChevronRight } from "lucide-react";
 
-type BlogBlock =
-  | { type: "paragraph"; text: string }
-  | { type: "heading"; text: string }
-  | { type: "list"; items: string[] };
-
-type Blog = {
-  slug: string;
-  title: string;
-  date: string;
-  img: string;
-  content: BlogBlock[];
-};
-
-const blogs: Blog[] = [
-  {
-    slug: "natural-water-treatment",
-    title:
-      "20 Years of Leadership in Biomimicry-Based Natural Water Treatment",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1573164713988-8665fc963095",
-    content: [
-      {
-        type: "paragraph",
-        text: "For over two decades, Ecoparadigm has led innovation in sustainable water treatment using biomimicry-based solutions.",
-      },
-      {
-        type: "heading",
-        text: "What is Biomimicry?",
-      },
-      {
-        type: "paragraph",
-        text: "Biomimicry is the practice of learning from nature to solve human engineering challenges efficiently and sustainably.",
-      },
-      {
-        type: "list",
-        items: [
-          "Uses natural filtration layers",
-          "Consumes minimal energy",
-          "Requires low maintenance",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Why It Matters",
-      },
-      {
-        type: "paragraph",
-        text: "As water scarcity grows globally, sustainable and cost-effective treatment systems are becoming essential.",
-      },
-    ],
-  },
-
-  {
-    slug: "naturalstp-savings",
-    title: "How NaturalSTPs Save Crores in Apartment Projects",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
-    content: [
-      {
-        type: "paragraph",
-        text: "NaturalSTP systems significantly reduce operational costs for residential and commercial projects.",
-      },
-      {
-        type: "heading",
-        text: "Key Benefits",
-      },
-      {
-        type: "list",
-        items: [
-          "No electricity usage",
-          "Minimal manpower required",
-          "Long-term savings",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: "Over time, these systems can save crores for large-scale developments.",
-      },
-    ],
-  },
-
-  {
-    slug: "what-is-naturalstp",
-    title: "What Is NaturalSTP and How Does It Work?",
-    date: "Oct 12, 2024",
-    img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-    content: [
-      {
-        type: "paragraph",
-        text: "NaturalSTP is a decentralized wastewater treatment system based on biological processes.",
-      },
-      {
-        type: "heading",
-        text: "How It Works",
-      },
-      {
-        type: "list",
-        items: [
-          "Filtration through natural media",
-          "Microbial breakdown of waste",
-          "Zero chemical dependency",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: "It is eco-friendly and ideal for sustainable infrastructure.",
-      },
-    ],
-  },
-
-  {
-    slug: "wastewater-explained",
-    title: "Sustainable Wastewater Treatment Explained",
-    date: "Oct 10, 2024",
-    img: "https://images.unsplash.com/photo-1492724441997-5dc865305da7",
-    content: [
-      {
-        type: "paragraph",
-        text: "Wastewater treatment is essential for environmental sustainability.",
-      },
-      {
-        type: "heading",
-        text: "Why It’s Important",
-      },
-      {
-        type: "list",
-        items: [
-          "Prevents water pollution",
-          "Enables water reuse",
-          "Protects ecosystems",
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: "rainwater-harvesting",
-    title: "Rainwater Harvesting for Smart Cities",
-    date: "Oct 09, 2024",
-    img: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29",
-    content: [
-      {
-        type: "paragraph",
-        text: "Rainwater harvesting helps cities become water-resilient.",
-      },
-      {
-        type: "heading",
-        text: "Advantages",
-      },
-      {
-        type: "list",
-        items: [
-          "Reduces groundwater depletion",
-          "Lowers water bills",
-          "Supports sustainability goals",
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: "zld-guide",
-    title: "Zero Liquid Discharge Systems Guide",
-    date: "Oct 08, 2024",
-    img: "https://images.unsplash.com/photo-1497436072909-f5e4be4f6b13",
-    content: [
-      {
-        type: "paragraph",
-        text: "ZLD ensures that no liquid waste leaves the facility.",
-      },
-      {
-        type: "heading",
-        text: "Key Features",
-      },
-      {
-        type: "list",
-        items: [
-          "Complete water recycling",
-          "No environmental discharge",
-          "Regulatory compliance",
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: "green-infrastructure",
-    title: "Green Infrastructure for Urban Areas",
-    date: "Oct 07, 2024",
-    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-    content: [
-      {
-        type: "paragraph",
-        text: "Green infrastructure integrates nature into urban planning.",
-      },
-      {
-        type: "list",
-        items: [
-          "Improves air quality",
-          "Reduces urban heat",
-          "Enhances biodiversity",
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: "climate-water",
-    title: "Climate Change & Water Management",
-    date: "Oct 06, 2024",
-    img: "https://images.unsplash.com/photo-1509395176047-4a66953fd231",
-    content: [
-      {
-        type: "paragraph",
-        text: "Climate change is directly impacting global water systems.",
-      },
-      {
-        type: "list",
-        items: [
-          "Increased droughts",
-          "Irregular rainfall",
-          "Water stress in cities",
-        ],
-      },
-    ],
-  },
-
-  {
-    slug: "future-engineering",
-    title: "Future of Environmental Engineering",
-    date: "Oct 05, 2024",
-    img: "https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d",
-    content: [
-      {
-        type: "paragraph",
-        text: "Environmental engineering is evolving rapidly with new technologies.",
-      },
-      {
-        type: "list",
-        items: [
-          "AI-driven monitoring",
-          "Smart water systems",
-          "Sustainable materials",
-        ],
-      },
-    ],
-  },
-];
+export const revalidate = 60; // ISR: Revalidate every 60 seconds
 
 export async function generateMetadata({
   params,
@@ -257,15 +13,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = blogs.find((b) => b.slug === slug);
+  
+  const { data: blog } = await supabase
+    .from("blogs")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
   if (!blog) return {};
 
-  const firstParagraph = blog.content.find((b) => b.type === "paragraph") as
-    | { type: "paragraph"; text: string }
-    | undefined;
-  const description = firstParagraph
-    ? firstParagraph.text
-    : `Read about ${blog.title} on Ecoparadigm's knowledge center.`;
+  const description = `Read about ${blog.title} on Ecoparadigm's knowledge center.`;
 
   return {
     title: `${blog.title} | Ecoparadigm Knowledge Center`,
@@ -297,7 +54,8 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  return blogs.map((b) => ({ slug: b.slug }));
+  const { data: blogs } = await supabase.from("blogs").select("slug");
+  return (blogs || []).map((b) => ({ slug: b.slug }));
 }
 
 export default async function BlogPage({
@@ -307,15 +65,23 @@ export default async function BlogPage({
 }) {
   const { slug } = await params;
 
-  const blog = blogs.find((b) => b.slug === slug);
+  const { data: blog } = await supabase
+    .from("blogs")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
   if (!blog) return notFound();
 
-  const firstParagraph = blog.content.find((b) => b.type === "paragraph") as
-    | { type: "paragraph"; text: string }
-    | undefined;
+  // Format date nicely
+  const formattedDate = new Date(blog.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
   return (
-    <section className="px-4 sm:px-6 md:px-12 lg:px-20 py-12">
+    <article className="min-h-screen bg-gray-50 flex flex-col">
       {/* JSON-LD: BlogPosting */}
       <script
         type="application/ld+json"
@@ -338,7 +104,7 @@ export default async function BlogPage({
                 url: "https://ecoparadigm.in/logo.png",
               },
             },
-            description: firstParagraph?.text ?? blog.title,
+            description: blog.title,
             mainEntityOfPage: {
               "@type": "WebPage",
               "@id": `https://ecoparadigm.in/resources/blogs/${blog.slug}`,
@@ -347,52 +113,166 @@ export default async function BlogPage({
         }}
       />
 
-      <div className="max-w-4xl mx-auto">
-        {/* IMAGE */}
-        <div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] rounded-xl overflow-hidden mb-8">
-          <Image src={blog.img} alt={blog.title} fill className="object-cover" />
+      {/* IMMERSIVE HERO SECTION */}
+      <header className="relative w-full h-[60vh] min-h-[500px] flex items-end justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src={blog.image_url || "https://images.unsplash.com/photo-1573164713988-8665fc963095"} 
+            alt={blog.title} 
+            fill 
+            className="object-cover" 
+            priority
+          />
         </div>
+        
+        {/* Gradient Overlay (Matches Homepage Aesthetics) */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#031c1c] via-[#062f2f]/80 to-black/30"></div>
 
-        {/* TITLE */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">
-          {blog.title}
-        </h1>
+        {/* Hero Content */}
+        <div className="relative z-20 w-full max-w-4xl mx-auto px-6 pb-16 md:pb-24">
+          <div className="flex items-center gap-4 text-green-400 mb-6 text-sm font-semibold tracking-wider uppercase">
+            {blog.category && (
+              <span className="flex items-center gap-1.5 bg-green-500/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-green-500/30">
+                <Tag className="w-4 h-4" />
+                {blog.category}
+              </span>
+            )}
+            <span className="flex items-center gap-1.5 text-gray-300">
+              <Calendar className="w-4 h-4" />
+              {formattedDate}
+            </span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-6 drop-shadow-lg">
+            {blog.title}
+          </h1>
 
-        {/* DATE */}
-        <p className="text-gray-500 mb-8">{blog.date}</p>
-
-        {/* CONTENT */}
-        <div className="space-y-6 text-gray-700 text-base sm:text-lg leading-relaxed">
-          {blog.content.map((block, index) => {
-            if (block.type === "heading") {
-              return (
-                <h2
-                  key={index}
-                  className="text-xl sm:text-2xl font-semibold text-black"
-                >
-                  {block.text}
-                </h2>
-              );
-            }
-
-            if (block.type === "paragraph") {
-              return <p key={index}>{block.text}</p>;
-            }
-
-            if (block.type === "list") {
-              return (
-                <ul key={index} className="list-disc pl-5 space-y-2">
-                  {block.items.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              );
-            }
-
-            return null;
-          })}
+          {/* Breadcrumb back to blogs */}
+          <Link href="/resources/blogs" className="inline-flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors text-sm font-medium">
+            <ArrowLeft className="w-4 h-4" />
+            Back to all resources
+          </Link>
         </div>
-      </div>
-    </section>
+      </header>
+
+      {/* CONTENT SECTION */}
+      <main className="flex-1 w-full max-w-3xl mx-auto px-6 py-16 md:py-24 bg-white md:-mt-10 relative z-30 rounded-t-3xl md:rounded-3xl shadow-xl mb-24 border border-gray-100 overflow-hidden">
+        
+        <div className="blog-content-area break-words w-full">
+          <div 
+            className="text-gray-700 text-lg leading-relaxed whitespace-normal text-justify"
+            dangerouslySetInnerHTML={{ __html: (blog.content || "<p>No content provided for this blog.</p>").replace(/&nbsp;/g, ' ') }}
+          />
+        </div>
+        
+        {/* Custom Premium Typography CSS */}
+        <style>{`
+          .blog-content-area {
+            font-family: var(--font-inter), system-ui, sans-serif;
+          }
+          .blog-content-area h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #062f2f; /* Deep brand green */
+            margin-top: 3rem;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+          }
+          .blog-content-area h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a4d4d;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+          }
+          .blog-content-area p {
+            margin-bottom: 1.5rem;
+            color: #374151;
+            font-size: 1.125rem;
+            line-height: 1.8;
+          }
+          .blog-content-area ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+          }
+          .blog-content-area ul li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: #4b5563;
+          }
+          .blog-content-area ul li::before {
+            content: "•";
+            color: #22c55e; /* Bright green accent */
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -5px;
+          }
+          .blog-content-area ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: #4b5563;
+          }
+          .blog-content-area ol li {
+            margin-bottom: 0.75rem;
+          }
+          .blog-content-area img {
+            border-radius: 1rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            width: 100%;
+            height: auto;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.15);
+            border: 1px solid #f3f4f6;
+          }
+          .blog-content-area blockquote {
+            border-left: 4px solid #22c55e;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #062f2f;
+            font-weight: 500;
+            font-size: 1.25rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(to right, #f0fdf4, transparent);
+            padding: 1.5rem;
+            border-radius: 0 1rem 1rem 0;
+          }
+          .blog-content-area a {
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+          }
+          .blog-content-area a:hover {
+            border-bottom-color: #16a34a;
+            color: #15803d;
+          }
+        `}</style>
+
+        {/* BOTTOM CTA */}
+        <div className="mt-16 pt-10 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h4 className="text-xl font-bold text-[#062f2f] mb-2">Interested in our solutions?</h4>
+            <p className="text-gray-500">Discover how Ecoparadigm can transform your water infrastructure.</p>
+          </div>
+          <Link 
+            href="/contact" 
+            className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-green-500/20 hover:shadow-green-500/40 transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
+          >
+            Contact Us
+            <ChevronRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </main>
+    </article>
   );
 }

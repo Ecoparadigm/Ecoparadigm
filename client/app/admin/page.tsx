@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import AdminBlogs from "@/components/admin/AdminBlogs";
 import AdminProjects from "@/components/admin/AdminProjects";
 import AdminClients from "@/components/admin/AdminClients";
+import { supabase } from "@/utils/supabase";
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -16,16 +17,19 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     setIsClient(true);
-    const auth = localStorage.getItem("adminAuth");
-    if (!auth) {
-      router.push("/admin/login");
-    }
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        router.push("/admin/login");
+      }
+    };
+    checkAuth();
   }, [router]);
 
   if (!isClient) return null; // Prevent hydration errors
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminAuth");
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     router.push("/admin/login");
   };
 

@@ -12,7 +12,10 @@ type Blog = {
   category: string;
   date: string;
   image_url: string;
+  content: string;
 };
+
+import RichTextEditor from "./RichTextEditor";
 
 export default function AdminBlogs() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -20,7 +23,7 @@ export default function AdminBlogs() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
-  const [formData, setFormData] = useState({ title: "", slug: "", category: "", date: "", image_url: "" });
+  const [formData, setFormData] = useState({ title: "", slug: "", category: "", date: "", image_url: "", content: "" });
 
   useEffect(() => {
     fetchBlogs();
@@ -56,13 +59,14 @@ export default function AdminBlogs() {
       category: blog.category,
       date: blog.date,
       image_url: blog.image_url || "",
+      content: blog.content || "",
     });
     setIsModalOpen(true);
   };
 
   const openAddModal = () => {
     setEditingId(null);
-    setFormData({ title: "", slug: "", category: "", date: "", image_url: "" });
+    setFormData({ title: "", slug: "", category: "", date: "", image_url: "", content: "" });
     setIsModalOpen(true);
   };
 
@@ -77,6 +81,7 @@ export default function AdminBlogs() {
       category: formData.category || "General",
       date: formData.date || new Date().toISOString().split("T")[0],
       image_url: formData.image_url || "https://images.unsplash.com/photo-1573164713988-8665fc963095",
+      content: formData.content || "",
     };
     
     if (editingId) {
@@ -192,7 +197,7 @@ export default function AdminBlogs() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white rounded-2xl shadow-xl w-full max-w-lg overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-2xl shadow-xl w-full max-w-4xl overflow-hidden max-h-[90vh] overflow-y-auto flex flex-col"
             >
               <div className="flex justify-between items-center p-6 border-b border-gray-100 sticky top-0 bg-white z-10">
                 <h3 className="text-lg font-bold text-gray-900">{editingId ? "Edit Blog" : "Add New Blog"}</h3>
@@ -223,7 +228,14 @@ export default function AdminBlogs() {
                     type="text"
                     required
                     value={formData.slug}
-                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                    onChange={(e) => {
+                      const formattedSlug = e.target.value
+                        .toLowerCase()
+                        .trimStart()
+                        .replace(/[^a-z0-9-]/g, '-')
+                        .replace(/-+/g, '-');
+                      setFormData({ ...formData, slug: formattedSlug });
+                    }}
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                     placeholder="e.g. natural-water-treatment"
                   />
@@ -277,7 +289,15 @@ export default function AdminBlogs() {
                   </div>
                 </div>
 
-                <div className="pt-4 flex justify-end gap-3 sticky bottom-0 bg-white py-2">
+                <div className="flex-1 mt-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Content</label>
+                  <RichTextEditor 
+                    value={formData.content} 
+                    onChange={(val) => setFormData({ ...formData, content: val })} 
+                  />
+                </div>
+
+                <div className="pt-4 flex justify-end gap-3 sticky bottom-0 bg-white py-2 z-10 border-t border-gray-100">
                   <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
