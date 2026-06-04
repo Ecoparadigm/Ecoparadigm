@@ -45,10 +45,18 @@ export async function generateMetadata({
       type: "article",
       publishedTime: blog.date,
       authors: ["Ecoparadigm"],
+      images: [
+        {
+          url: blog.image_url || "/logo.png",
+          alt: blog.title,
+        },
+      ],
     },
     twitter: {
+      card: "summary_large_image",
       title: blog.title,
       description,
+      images: [blog.image_url || "/logo.png"],
     },
   };
 }

@@ -43,13 +43,10 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
       <aside className="w-64 bg-gradient-to-b from-[#062f2f] to-[#031c1c] text-white flex flex-col hidden md:flex border-r border-white/5 shadow-xl z-10">
-        <div className="p-6 border-b border-white/10 flex items-center gap-3">
-          <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(34,197,94,0.3)]">
-            <ShieldCheck className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <h1 className="font-bold text-lg leading-tight tracking-tight">EcoParadigm</h1>
-            <p className="text-green-400 text-xs font-medium uppercase tracking-wider">Admin Portal</p>
+        <div className="p-6 border-b border-white/10 flex flex-col items-start gap-4">
+          <div className="flex flex-col justify-center">
+            <img src="/logoWhite.png" alt="EcoParadigm Logo" className="h-9 w-auto object-contain object-left mb-1" />
+            <p className="text-green-400 text-[11px] font-bold uppercase tracking-widest">Admin Portal</p>
           </div>
         </div>
 
