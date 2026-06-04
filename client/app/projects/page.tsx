@@ -36,6 +36,8 @@ export const metadata: Metadata = {
 
 import { supabase } from "@/utils/supabase";
 
+export const revalidate = 0;
+
 export default async function ProjectsPage() {
   const { data: projects, error } = await supabase
     .from("projects")

@@ -39,6 +39,8 @@ export const metadata: Metadata = {
 
 import { supabase } from "@/utils/supabase";
 
+export const revalidate = 0;
+
 export default async function BlogsPage() {
   const { data: blogs } = await supabase
     .from("blogs")
